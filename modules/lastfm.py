@@ -3,6 +3,7 @@
 import asyncio
 import json
 import math
+from models import Album
 import time
 from dataclasses import asdict, dataclass, field
 from datetime import datetime
@@ -12,7 +13,7 @@ from urllib.parse import urlencode
 from aiohttp import ClientResponse, ClientSession
 from dataclasses_json import dataclass_json
 
-from modules.models import Artist, Track
+from models import Artist, Track
 
 
 @dataclass
@@ -72,7 +73,7 @@ def _parse_recent_tracks(res: str) -> _RecentTracks:
         album: str = track["album"]["#text"]
         art: str = track["image"][3]["#text"]
         date = int(track["date"]["uts"])
-        parsed_tracks.append(Track(name, artists, album, date, image=art))
+        parsed_tracks.append(Track(name, artists, date, Album(image=art, name=album)))
 
     return _RecentTracks(total_pages, current_page, parsed_tracks)
 
@@ -90,7 +91,7 @@ class LastFM:
 
     async def _request(
         self, query: _LastFMQuery, session: ClientSession, method="GET"
-    ) -> ClientResponse:
+    ) -> str:
         url = self._base_url + urlencode(asdict(query))
         async with session.get(url) as res:
             if res.status != 200:
@@ -140,9 +141,10 @@ class LastFM:
         return recent_tracks
 
 
-async def import_tracks(username: str):
+async def import_tracks(username: str) -> List[Track]:
+    """ Imports tracks from LastFm """
     with open("auth/lastfm_creds.json", "r") as file:
         api_key: str = json.loads(file.read())["api_key"]
 
     lastfm = LastFM(api_key)
-    tracks = await lastfm.get_recent_tracks(username)
+    return await lastfm.get_recent_tracks(username)
