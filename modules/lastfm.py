@@ -3,17 +3,14 @@
 import asyncio
 import json
 import math
-from models import Album
 import time
 from dataclasses import asdict, dataclass, field
-from datetime import datetime
-from typing import Awaitable, List, Optional, Tuple
+from typing import Awaitable, Dict, List, Optional, Tuple
 from urllib.parse import urlencode
 
-from aiohttp import ClientResponse, ClientSession
-from dataclasses_json import dataclass_json
+from aiohttp import ClientSession
 
-from models import Artist, Track
+from modules.models import Album, Artist, Track
 
 
 @dataclass
@@ -47,13 +44,40 @@ class _RecentTracksQuery(_LastFMQuery):
         self.method = "user.getRecentTracks"
 
 
-def _parse_artists(artist_str: str) -> List[Artist]:
+def none_or_str(text: str) -> Optional[str]:
+    if text == "":
+        return None
+
+    return text
+
+
+def _parse_artists(artist_dict: Dict) -> List[Artist]:
+    artist_str: str = artist_dict["#text"]
+
+    mbid = none_or_str(artist_dict["mbid"])
+    if "&" not in artist_str:
+        return [Artist(name=artist_str, mbid=mbid)]
+
     artists_str: List[str] = artist_str.split("&")
     artists: List[Artist] = []
     for artist in artists_str:
-        artists.append(Artist(artist))
+        artists.append(Artist(artist.strip()))
 
     return artists
+
+
+def _parse_track(track: Dict) -> Track:
+    name: str = track["name"]
+    artists: List[Artist] = _parse_artists(track["artist"])
+    album_name: str = track["album"]["#text"]
+    album_art: str = track["image"][3]["#text"]
+    album = None
+    if album_name != "":
+        album = Album(image=none_or_str(album_art), name=album_name)
+
+    date = int(track["date"]["uts"])
+    mbid = none_or_str(track["mbid"])
+    return Track(name, artists, date, album, mbid=mbid)
 
 
 def _parse_recent_tracks(res: str) -> _RecentTracks:
@@ -68,12 +92,7 @@ def _parse_recent_tracks(res: str) -> _RecentTracks:
         is_playing = "@attr" in track and bool(track["@attr"]["nowplaying"])
         if is_playing:
             continue
-        name: str = track["name"]
-        artists: List[Artist] = _parse_artists(track["artist"]["#text"])
-        album: str = track["album"]["#text"]
-        art: str = track["image"][3]["#text"]
-        date = int(track["date"]["uts"])
-        parsed_tracks.append(Track(name, artists, date, Album(image=art, name=album)))
+        parsed_tracks.append(_parse_track(track))
 
     return _RecentTracks(total_pages, current_page, parsed_tracks)
 

@@ -5,12 +5,11 @@ import copy
 import json
 import time
 from dataclasses import asdict, dataclass, field
-from os import name, sendfile
 from typing import Awaitable, Dict, List, Optional
 from urllib.parse import urlencode
 
 import requests
-from aiohttp import ClientResponse, ClientSession
+from aiohttp import ClientSession, TCPConnector
 from dataclasses_json import dataclass_json
 from requests.auth import HTTPBasicAuth
 
@@ -105,11 +104,14 @@ class Spotify:
     def __init__(self, client_creds: SpotifyClientCredentials):
         self._creds = client_creds
         self._base_url = "https://api.spotify.com/v1/"
+        self._total = 0
+        self._sleep = 0
 
     async def _search_request(
         self, query: _SearchQuery, session: ClientSession, counter: int = 0
     ) -> str:
         url = self._base_url + "search?" + urlencode(asdict(query))
+        time.sleep(self._sleep)
         async with session.get(url) as res:
             if res.status != 200:
                 if counter > 3:
@@ -118,13 +120,17 @@ class Spotify:
                 if res.status == 401:
                     self._creds.get_access_token()
                 elif res.status == 429:
-                    print("RATE LIMIT")
+                    print(res.headers["Retry-After"])
+                    self._sleep = int(res.headers["Retry-After"])
                     time.sleep(int(res.headers["Retry-After"]))
                 else:
-                    time.sleep(60)
+                    asyncio.sleep(60)
 
+                self._sleep = 0
                 return await self._search_request(query, session, counter + 1)
-
+            else:
+                self._total += 1
+                print(self._total)
             return await res.text()
 
     async def get_track_info(self, track: Track, session: ClientSession) -> Track:
@@ -159,8 +165,11 @@ async def match_lastfm_tracks(tracks: List[Track]):
     for track in tracks:
         track_map[track.name] = copy.deepcopy(track)
 
-    awaitable_tracks: Dict[str, Awaitable[Track]] = {}
-    async with ClientSession(headers=spotify.get_auth_headers()) as session:
+    conn = TCPConnector(limit=10)
+    async with ClientSession(
+        headers=spotify.get_auth_headers(), connector=conn
+    ) as session:
+        awaitable_tracks: Dict[str, Track] = {}
         for key in track_map:
             track = track_map[key]
             awaitable_tracks[key] = asyncio.create_task(
@@ -168,6 +177,12 @@ async def match_lastfm_tracks(tracks: List[Track]):
             )
 
         await asyncio.gather(*(awaitable_tracks.values()))
+
+        for key in awaitable_tracks:
+            awaitable_track: Awaitable[Track] = awaitable_tracks[key]
+            track_map[key] = await awaitable_track
+        hello = "Hello"
+
 
 loop = asyncio.get_event_loop()
 import_tracks = loop.run_until_complete(import_tracks("vanpra"))
