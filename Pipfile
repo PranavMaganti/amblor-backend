@@ -15,6 +15,13 @@ dataclasses-json = "*"
 aiohttp = "*"
 fastapi = "*"
 uvicorn = "*"
+google-cloud-firestore = "*"
+pymongo = "*"
+bcrypt = "*"
+dnspython = "*"
+passlib = "*"
+pyjwt = "*"
+async-spotify = "*"
 
 [requires]
 python_version = "3.8"

@@ -5,12 +5,13 @@ import json
 import math
 import time
 from dataclasses import asdict, dataclass, field
-from typing import Awaitable, Dict, List, Optional, Tuple
+from typing import Awaitable, Dict, List, Tuple
 from urllib.parse import urlencode
 
 from aiohttp import ClientSession
 
 from modules.models import Album, Artist, Track
+from modules.util import none_or_str
 
 
 @dataclass
@@ -42,13 +43,6 @@ class _RecentTracksQuery(_LastFMQuery):
 
     def __post_init__(self):
         self.method = "user.getRecentTracks"
-
-
-def none_or_str(text: str) -> Optional[str]:
-    if text == "":
-        return None
-
-    return text
 
 
 def _parse_artists(artist_dict: Dict) -> List[Artist]:
@@ -108,15 +102,13 @@ class LastFM:
         self._api_key = api_key
         self._base_url = "http://ws.audioscrobbler.com/2.0/?"
 
-    async def _request(
-        self, query: _LastFMQuery, session: ClientSession, method="GET"
-    ) -> str:
+    async def _request(self, query: _LastFMQuery, session: ClientSession) -> str:
         url = self._base_url + urlencode(asdict(query))
         async with session.get(url) as res:
             if res.status != 200:
                 print("RATE LIMITED")
                 time.sleep(5)
-                return await self._request(query, session, method)
+                return await self._request(query, session)
 
             return await res.text()
 
