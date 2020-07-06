@@ -1,5 +1,4 @@
 """ Testing for LastFM module """
-import asyncio
 import json
 import unittest
 
