@@ -1,0 +1,184 @@
+{
+    "sample_tracks": [
+        {
+            "artist": {
+                "mbid": "",
+                "#text": "Lil Wayne & Ty Dolla $ign"
+            },
+            "album": {
+                "mbid": "",
+                "#text": "Spider-Man: Into the Spider-Verse (Soundtrack From & Inspired by the Motion Picture)"
+            },
+            "image": [
+                {
+                    "size": "small",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/34s/0c9a42c47c4b2e26cedfbd117f9f0c24.jpg"
+                },
+                {
+                    "size": "medium",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/64s/0c9a42c47c4b2e26cedfbd117f9f0c24.jpg"
+                },
+                {
+                    "size": "large",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/174s/0c9a42c47c4b2e26cedfbd117f9f0c24.jpg"
+                },
+                {
+                    "size": "extralarge",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/0c9a42c47c4b2e26cedfbd117f9f0c24.jpg"
+                }
+            ],
+            "streamable": "0",
+            "date": {
+                "uts": "1593522882",
+                "#text": "30 Jun 2020, 13:14"
+            },
+            "url": "https://www.last.fm/music/Lil+Wayne+&+Ty+Dolla+$ign/_/Scared+of+the+Dark+(feat.+XXXTENTACION)",
+            "name": "Scared of the Dark (feat. XXXTENTACION)",
+            "mbid": ""
+        },
+        {
+            "artist": {
+                "mbid": "4757df70-6c3e-46b8-99c0-a68644595c9a",
+                "#text": "Julia Michaels"
+            },
+            "album": {
+                "mbid": "1c15461e-d42b-48c7-98da-11dbec0b617e",
+                "#text": "Jump (Acoustic)"
+            },
+            "image": [
+                {
+                    "size": "small",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/34s/ded77226f141248e12497f69b0af6715.jpg"
+                },
+                {
+                    "size": "medium",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/64s/ded77226f141248e12497f69b0af6715.jpg"
+                },
+                {
+                    "size": "large",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/174s/ded77226f141248e12497f69b0af6715.jpg"
+                },
+                {
+                    "size": "extralarge",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/ded77226f141248e12497f69b0af6715.jpg"
+                }
+            ],
+            "streamable": "0",
+            "date": {
+                "uts": "1593796849",
+                "#text": "03 Jul 2020, 17:20"
+            },
+            "url": "https://www.last.fm/music/Julia+Michaels/_/Jump+(Acoustic)",
+            "name": "Jump (Acoustic)",
+            "mbid": "57476328-1358-47b8-a273-9c3308640e48"
+        },
+        {
+            "artist": {
+                "mbid": "",
+                "#text": "Chelsea Cutler"
+            },
+            "album": {
+                "mbid": "9eab73c5-a614-4a63-a700-8f0c90bd970b",
+                "#text": "How To Be Human"
+            },
+            "image": [
+                {
+                    "size": "small",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/34s/e6ad6e29c4e764a7f82b45aba645cd83.jpg"
+                },
+                {
+                    "size": "medium",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/64s/e6ad6e29c4e764a7f82b45aba645cd83.jpg"
+                },
+                {
+                    "size": "large",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/174s/e6ad6e29c4e764a7f82b45aba645cd83.jpg"
+                },
+                {
+                    "size": "extralarge",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/e6ad6e29c4e764a7f82b45aba645cd83.jpg"
+                }
+            ],
+            "streamable": "0",
+            "date": {
+                "uts": "1593696607",
+                "#text": "02 Jul 2020, 13:30"
+            },
+            "url": "https://www.last.fm/music/Chelsea+Cutler/_/Lucky",
+            "name": "Lucky",
+            "mbid": ""
+        },
+        {
+            "artist": {
+                "mbid": "",
+                "#text": "JP Saxe & Julia Michaels"
+            },
+            "album": {
+                "mbid": "",
+                "#text": ""
+            },
+            "image": [
+                {
+                    "size": "small",
+                    "#text": ""
+                },
+                {
+                    "size": "medium",
+                    "#text": ""
+                },
+                {
+                    "size": "large",
+                    "#text": ""
+                },
+                {
+                    "size": "extralarge",
+                    "#text": ""
+                }
+            ],
+            "streamable": "0",
+            "date": {
+                "uts": "1593552783",
+                "#text": "30 Jun 2020, 21:33"
+            },
+            "url": "https://www.last.fm/music/JP+Saxe+&+Julia+Michaels/_/If+The+World+Was+Ending+(feat.+Julia+Michaels)",
+            "name": "If The World Was Ending (feat. Julia Michaels)",
+            "mbid": ""
+        },
+        {
+            "artist": {
+                "mbid": "81ec70d7-a640-4960-a351-039e054b2bb8",
+                "#text": "Donnie Trumpet & The Social Experiment"
+            },
+            "album": {
+                "mbid": "2f536a6a-ffbe-4396-a6a5-098302d6c4d0",
+                "#text": "Surf"
+            },
+            "image": [
+                {
+                    "size": "small",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/34s/29ce6058b6b0439691511d104b8252d0.jpg"
+                },
+                {
+                    "size": "medium",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/64s/29ce6058b6b0439691511d104b8252d0.jpg"
+                },
+                {
+                    "size": "large",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/174s/29ce6058b6b0439691511d104b8252d0.jpg"
+                },
+                {
+                    "size": "extralarge",
+                    "#text": "https://lastfm.freetls.fastly.net/i/u/300x300/29ce6058b6b0439691511d104b8252d0.jpg"
+                }
+            ],
+            "streamable": "0",
+            "date": {
+                "uts": "1593552616",
+                "#text": "30 Jun 2020, 21:30"
+            },
+            "url": "https://www.last.fm/music/Donnie+Trumpet+&+The+Social+Experiment/_/Sunday+Candy",
+            "name": "Sunday Candy",
+            "mbid": "40c3001c-3b26-4629-bdb3-be4abf8e509a"
+        }
+    ]
+}
