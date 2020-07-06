@@ -1,8 +1,11 @@
 import json
 from typing import List
 
-from async_spotify import (SpotifyApiClient, SpotifyApiPreferences,
-                           SpotifyAuthorisationToken)
+from async_spotify import (
+    SpotifyApiClient,
+    SpotifyApiPreferences,
+    SpotifyAuthorisationToken,
+)
 
 from modules.models import Album, Artist, Track, UnmatchedTrack
 
