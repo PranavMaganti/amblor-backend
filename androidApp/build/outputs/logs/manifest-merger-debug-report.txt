@@ -1,0 +1,225 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:2:1-21:12
+MERGED from [:shared] /home/pranav/work/music-scrobbler/shared/build/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.material:material:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/49d778419a11ff4f44a858f39e3caa59/material-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:17:1-31:12
+MERGED from [androidx.ui:ui-material:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/803d54c6aeb5dd714b18012993d0a9cb/ui-material-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-foundation:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/d386fc346bfea28f40198744f0abb7a7/ui-foundation-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-animation:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/37d0332883349fbcdfd87c4c0cfa6487/ui-animation-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-layout:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/7c9be372df3b05936d0ad068fa2e0ed0/ui-layout-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-material-icons-extended:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/98724bf6eb782d23f29be60795a9271a/ui-material-icons-extended-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-text:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/949b7cf68ac9f062f114617f4bd4ddb8/ui-text-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-material-icons-core:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/8f62f3ebb4b3cb9aecd4a40edc6ffdc0/ui-material-icons-core-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-core:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/d245bdd1c3260af98f604e6856b99e32/ui-core-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-text-core:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/96014415fb22074d7123fcf2d67f4d59/ui-text-core-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-saved-instance-state:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/ba8eae1d0104b948d21f1dc275c0c472/ui-saved-instance-state-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-animation-core:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/aa8418d835fa3aa18fe1f175f7ed931f/ui-animation-core-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-graphics:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/b7f2c80890449050d2c4ae9fde411762/ui-graphics-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-unit:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/2637c45616060c7361d7850ad23b942e/ui-unit-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-geometry:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/30ce30ff970bcd9d8c56265df2a65994/ui-geometry-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-util:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/99ebb0b7e5d3e17c5971100d899ce088/ui-util-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.compose:compose-runtime:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/e68bc1e93e21e0fd00660c6968dad328/compose-runtime-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.core:core-ktx:1.3.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/b7715a78917d8ef9bbb563124a3f212b/core-ktx-1.3.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.appcompat:appcompat:1.3.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/0d2d742f112c037ef0f0006854bfa866/appcompat-1.3.0-alpha01/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.ui:ui-text-android:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/79318b6c9209d5d2b5d96199203375c1/ui-text-android-0.1.0-dev14/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cardview:cardview:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/9bb3f370fe1b0f5de56a2b3563ecd382/cardview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/0a2d4e8893d775213c645a56b6ea42e8/coordinatorlayout-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.transition:transition:1.2.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/70b8f6a378677db7f9b4f18e2419db7e/transition-1.2.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.3.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/42b44f13c67f1cd7d2a520328886f980/appcompat-resources-1.3.0-alpha01/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/2f6206677771aef0f5f14e43f5f6b7a9/vectordrawable-animated-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/57066e07cbefdc1e84911d7df309f163/vectordrawable-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/3d2e7b0915db650da75f5c0b65db6d18/viewpager2-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/92bdf87a2d39ff242e36f6ec94f7b01c/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.fragment:fragment:1.3.0-alpha05] /home/pranav/.gradle/caches/transforms-2/files-2.1/cd0398e8d9160ee1b3f0930288b93154/fragment-1.3.0-alpha05/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/cca9a27066d65f14dd2526632c8e52fa/viewpager-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/ee4312522a3c1475957b77e45701143a/drawerlayout-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.customview:customview:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/02f5177c0ecf552b168d204e8a172249/customview-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.autofill:autofill:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/7c004524fee6cd0b89d241942d8741fd/autofill-1.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.activity:activity:1.2.0-alpha05] /home/pranav/.gradle/caches/transforms-2/files-2.1/26e6dc402f7dc756eca0389a16f259f8/activity-1.2.0-alpha05/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.loader:loader:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/9bec8eb6d2c786b7e572fee9d64ab886/loader-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.5.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/efb4e562400c1f7f66728792e178c7b4/core-1.5.0-alpha01/AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/c5e85a1db710f46a267c9c5682eeedc0/versionedparcelable-1.1.0/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0-alpha03] /home/pranav/.gradle/caches/transforms-2/files-2.1/6ce17c371afd1b6383f888a8a878d881/lifecycle-viewmodel-savedstate-2.3.0-alpha03/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.0-alpha03] /home/pranav/.gradle/caches/transforms-2/files-2.1/dff894fceda0311a87f0a6c4a896cb40/lifecycle-viewmodel-2.3.0-alpha03/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.savedstate:savedstate:1.1.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/20cf872f3339f78d05378ddd2cc10043/savedstate-1.1.0-alpha01/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.0-alpha03] /home/pranav/.gradle/caches/transforms-2/files-2.1/a430c4686974cc369b4a1b3c29cf87e0/lifecycle-runtime-2.3.0-alpha03/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/0d1969b66401085622e748b44ee68541/cursoradapter-1.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/e7007c1eeb49778a47b2bdf6bf49eb86/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.0-alpha03] /home/pranav/.gradle/caches/transforms-2/files-2.1/624978ffd6eff7b1d7e0323aa4f8b139/lifecycle-livedata-core-2.3.0-alpha03/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/2deab5541b5fdeeb0c14ad540aea6305/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/7b9231cb247bc7d70b85be50d25dbd8e/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
+INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:2:1-21:12
+	package
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:3:5-35
+		INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+		INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:5:5-19:19
+MERGED from [com.google.android.material:material:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/49d778419a11ff4f44a858f39e3caa59/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/49d778419a11ff4f44a858f39e3caa59/material-1.1.0/AndroidManifest.xml:22:5-20
+MERGED from [androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:24:5-29:19
+MERGED from [androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:24:5-29:19
+MERGED from [androidx.core:core:1.5.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/efb4e562400c1f7f66728792e178c7b4/core-1.5.0-alpha01/AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.5.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/efb4e562400c1f7f66728792e178c7b4/core-1.5.0-alpha01/AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/c5e85a1db710f46a267c9c5682eeedc0/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/c5e85a1db710f46a267c9c5682eeedc0/versionedparcelable-1.1.0/AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.5.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/efb4e562400c1f7f66728792e178c7b4/core-1.5.0-alpha01/AndroidManifest.xml:24:18-86
+	android:supportsRtl
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:7:9-35
+	android:windowDisablePreview
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:9:9-44
+	android:allowBackup
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:6:9-35
+	android:theme
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:8:9-47
+activity#com.vanpra.scrobbler.MainActivity
+ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:10:9-18:20
+	android:theme
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:12:13-51
+	android:name
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:11:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:16:27-74
+uses-sdk
+INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+MERGED from [:shared] /home/pranav/work/music-scrobbler/shared/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:shared] /home/pranav/work/music-scrobbler/shared/build/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [com.google.android.material:material:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/49d778419a11ff4f44a858f39e3caa59/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/49d778419a11ff4f44a858f39e3caa59/material-1.1.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-material:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/803d54c6aeb5dd714b18012993d0a9cb/ui-material-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-material:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/803d54c6aeb5dd714b18012993d0a9cb/ui-material-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-foundation:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/d386fc346bfea28f40198744f0abb7a7/ui-foundation-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-foundation:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/d386fc346bfea28f40198744f0abb7a7/ui-foundation-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-animation:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/37d0332883349fbcdfd87c4c0cfa6487/ui-animation-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-animation:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/37d0332883349fbcdfd87c4c0cfa6487/ui-animation-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-layout:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/7c9be372df3b05936d0ad068fa2e0ed0/ui-layout-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-layout:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/7c9be372df3b05936d0ad068fa2e0ed0/ui-layout-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-material-icons-extended:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/98724bf6eb782d23f29be60795a9271a/ui-material-icons-extended-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-material-icons-extended:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/98724bf6eb782d23f29be60795a9271a/ui-material-icons-extended-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-text:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/949b7cf68ac9f062f114617f4bd4ddb8/ui-text-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-text:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/949b7cf68ac9f062f114617f4bd4ddb8/ui-text-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-material-icons-core:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/8f62f3ebb4b3cb9aecd4a40edc6ffdc0/ui-material-icons-core-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-material-icons-core:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/8f62f3ebb4b3cb9aecd4a40edc6ffdc0/ui-material-icons-core-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-core:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/d245bdd1c3260af98f604e6856b99e32/ui-core-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-core:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/d245bdd1c3260af98f604e6856b99e32/ui-core-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-text-core:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/96014415fb22074d7123fcf2d67f4d59/ui-text-core-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-text-core:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/96014415fb22074d7123fcf2d67f4d59/ui-text-core-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-saved-instance-state:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/ba8eae1d0104b948d21f1dc275c0c472/ui-saved-instance-state-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-saved-instance-state:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/ba8eae1d0104b948d21f1dc275c0c472/ui-saved-instance-state-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-animation-core:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/aa8418d835fa3aa18fe1f175f7ed931f/ui-animation-core-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-animation-core:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/aa8418d835fa3aa18fe1f175f7ed931f/ui-animation-core-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-graphics:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/b7f2c80890449050d2c4ae9fde411762/ui-graphics-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-graphics:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/b7f2c80890449050d2c4ae9fde411762/ui-graphics-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-unit:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/2637c45616060c7361d7850ad23b942e/ui-unit-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-unit:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/2637c45616060c7361d7850ad23b942e/ui-unit-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-geometry:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/30ce30ff970bcd9d8c56265df2a65994/ui-geometry-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-geometry:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/30ce30ff970bcd9d8c56265df2a65994/ui-geometry-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-util:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/99ebb0b7e5d3e17c5971100d899ce088/ui-util-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-util:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/99ebb0b7e5d3e17c5971100d899ce088/ui-util-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.compose:compose-runtime:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/e68bc1e93e21e0fd00660c6968dad328/compose-runtime-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.compose:compose-runtime:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/e68bc1e93e21e0fd00660c6968dad328/compose-runtime-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core-ktx:1.3.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/b7715a78917d8ef9bbb563124a3f212b/core-ktx-1.3.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.core:core-ktx:1.3.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/b7715a78917d8ef9bbb563124a3f212b/core-ktx-1.3.0/AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.appcompat:appcompat:1.3.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/0d2d742f112c037ef0f0006854bfa866/appcompat-1.3.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.3.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/0d2d742f112c037ef0f0006854bfa866/appcompat-1.3.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-text-android:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/79318b6c9209d5d2b5d96199203375c1/ui-text-android-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.ui:ui-text-android:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/79318b6c9209d5d2b5d96199203375c1/ui-text-android-0.1.0-dev14/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cardview:cardview:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/9bb3f370fe1b0f5de56a2b3563ecd382/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/9bb3f370fe1b0f5de56a2b3563ecd382/cardview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/0a2d4e8893d775213c645a56b6ea42e8/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/0a2d4e8893d775213c645a56b6ea42e8/coordinatorlayout-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/70b8f6a378677db7f9b4f18e2419db7e/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.transition:transition:1.2.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/70b8f6a378677db7f9b4f18e2419db7e/transition-1.2.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.3.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/42b44f13c67f1cd7d2a520328886f980/appcompat-resources-1.3.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.3.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/42b44f13c67f1cd7d2a520328886f980/appcompat-resources-1.3.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/2f6206677771aef0f5f14e43f5f6b7a9/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/2f6206677771aef0f5f14e43f5f6b7a9/vectordrawable-animated-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/57066e07cbefdc1e84911d7df309f163/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/57066e07cbefdc1e84911d7df309f163/vectordrawable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/3d2e7b0915db650da75f5c0b65db6d18/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager2:viewpager2:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/3d2e7b0915db650da75f5c0b65db6d18/viewpager2-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/92bdf87a2d39ff242e36f6ec94f7b01c/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/92bdf87a2d39ff242e36f6ec94f7b01c/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.0-alpha05] /home/pranav/.gradle/caches/transforms-2/files-2.1/cd0398e8d9160ee1b3f0930288b93154/fragment-1.3.0-alpha05/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.3.0-alpha05] /home/pranav/.gradle/caches/transforms-2/files-2.1/cd0398e8d9160ee1b3f0930288b93154/fragment-1.3.0-alpha05/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/cca9a27066d65f14dd2526632c8e52fa/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/cca9a27066d65f14dd2526632c8e52fa/viewpager-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/ee4312522a3c1475957b77e45701143a/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/ee4312522a3c1475957b77e45701143a/drawerlayout-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/02f5177c0ecf552b168d204e8a172249/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/02f5177c0ecf552b168d204e8a172249/customview-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.autofill:autofill:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/7c004524fee6cd0b89d241942d8741fd/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.autofill:autofill:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/7c004524fee6cd0b89d241942d8741fd/autofill-1.0.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.0-alpha05] /home/pranav/.gradle/caches/transforms-2/files-2.1/26e6dc402f7dc756eca0389a16f259f8/activity-1.2.0-alpha05/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.2.0-alpha05] /home/pranav/.gradle/caches/transforms-2/files-2.1/26e6dc402f7dc756eca0389a16f259f8/activity-1.2.0-alpha05/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.loader:loader:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/9bec8eb6d2c786b7e572fee9d64ab886/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/9bec8eb6d2c786b7e572fee9d64ab886/loader-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.5.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/efb4e562400c1f7f66728792e178c7b4/core-1.5.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.5.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/efb4e562400c1f7f66728792e178c7b4/core-1.5.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/c5e85a1db710f46a267c9c5682eeedc0/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/c5e85a1db710f46a267c9c5682eeedc0/versionedparcelable-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0-alpha03] /home/pranav/.gradle/caches/transforms-2/files-2.1/6ce17c371afd1b6383f888a8a878d881/lifecycle-viewmodel-savedstate-2.3.0-alpha03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.3.0-alpha03] /home/pranav/.gradle/caches/transforms-2/files-2.1/6ce17c371afd1b6383f888a8a878d881/lifecycle-viewmodel-savedstate-2.3.0-alpha03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.0-alpha03] /home/pranav/.gradle/caches/transforms-2/files-2.1/dff894fceda0311a87f0a6c4a896cb40/lifecycle-viewmodel-2.3.0-alpha03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.0-alpha03] /home/pranav/.gradle/caches/transforms-2/files-2.1/dff894fceda0311a87f0a6c4a896cb40/lifecycle-viewmodel-2.3.0-alpha03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/20cf872f3339f78d05378ddd2cc10043/savedstate-1.1.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.1.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/20cf872f3339f78d05378ddd2cc10043/savedstate-1.1.0-alpha01/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.0-alpha03] /home/pranav/.gradle/caches/transforms-2/files-2.1/a430c4686974cc369b4a1b3c29cf87e0/lifecycle-runtime-2.3.0-alpha03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.0-alpha03] /home/pranav/.gradle/caches/transforms-2/files-2.1/a430c4686974cc369b4a1b3c29cf87e0/lifecycle-runtime-2.3.0-alpha03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/0d1969b66401085622e748b44ee68541/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/0d1969b66401085622e748b44ee68541/cursoradapter-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/e7007c1eeb49778a47b2bdf6bf49eb86/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/e7007c1eeb49778a47b2bdf6bf49eb86/lifecycle-livedata-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.0-alpha03] /home/pranav/.gradle/caches/transforms-2/files-2.1/624978ffd6eff7b1d7e0323aa4f8b139/lifecycle-livedata-core-2.3.0-alpha03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.0-alpha03] /home/pranav/.gradle/caches/transforms-2/files-2.1/624978ffd6eff7b1d7e0323aa4f8b139/lifecycle-livedata-core-2.3.0-alpha03/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/2deab5541b5fdeeb0c14ad540aea6305/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/2deab5541b5fdeeb0c14ad540aea6305/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/7b9231cb247bc7d70b85be50d25dbd8e/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] /home/pranav/.gradle/caches/transforms-2/files-2.1/7b9231cb247bc7d70b85be50d25dbd8e/interpolator-1.0.0/AndroidManifest.xml:20:5-44
+INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+		INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+		ADDED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+		INJECTED from /home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+activity#androidx.ui.tooling.preview.PreviewActivity
+ADDED from [androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:25:9-28:79
+	android:exported
+		ADDED from [androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:27:13-36
+	android:theme
+		ADDED from [androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:28:13-76
+	android:name
+		ADDED from [androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:26:13-71

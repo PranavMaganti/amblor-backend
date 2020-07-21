@@ -132,8 +132,7 @@ class LastFM:
             awitable_pages: List[Awaitable[str]] = []
 
             for page in range(1, total_pages + 1):
-                query = _RecentTracksQuery(
-                    self._api_key, username, page, limit)
+                query = _RecentTracksQuery(self._api_key, username, page, limit)
                 awitable_pages.append(
                     asyncio.create_task(self._request(query, session))
                 )

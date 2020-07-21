@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.ui:ui-geometry:0.1.0-dev14@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/30ce30ff970bcd9d8c56265df2a65994/ui-geometry-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1f59997bbec550dcb1acc6342ac0e0de/jetified-ui-geometry-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/93a81dec884f450b476dae0f265d50ec/ui-geometry-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1f59997bbec550dcb1acc6342ac0e0de/jetified-ui-geometry-0.1.0-dev14/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1f59997bbec550dcb1acc6342ac0e0de/jetified-ui-geometry-0.1.0-dev14/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.ui/ui-geometry/0.1.0-dev14/d33a3c5eaf07cb0c1914a1b15765a2e3a09fa4f5/ui-geometry-0.1.0-dev14-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

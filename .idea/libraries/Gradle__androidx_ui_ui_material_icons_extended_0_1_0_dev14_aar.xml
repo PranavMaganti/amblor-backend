@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.ui:ui-material-icons-extended:0.1.0-dev14@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/98724bf6eb782d23f29be60795a9271a/ui-material-icons-extended-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cb64c320b52cb31fe6edb4420b708e75/jetified-ui-material-icons-extended-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/35283712ef61152c5f1401208c14c1e2/ui-material-icons-extended-0.1.0-dev14/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cb64c320b52cb31fe6edb4420b708e75/jetified-ui-material-icons-extended-0.1.0-dev14/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cb64c320b52cb31fe6edb4420b708e75/jetified-ui-material-icons-extended-0.1.0-dev14/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.ui/ui-material-icons-extended/0.1.0-dev14/5b8f86fea035328fc9e8c660773037a3401ce25f/ui-material-icons-extended-0.1.0-dev14-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

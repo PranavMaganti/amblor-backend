@@ -1,0 +1,55 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.vanpra.scrobbler"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="24"
+8-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+9        android:targetSdkVersion="30" />
+9-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml
+10
+11    <application
+11-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:5:5-19:19
+12        android:allowBackup="true"
+12-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:6:9-35
+13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+13-->[androidx.core:core:1.5.0-alpha01] /home/pranav/.gradle/caches/transforms-2/files-2.1/efb4e562400c1f7f66728792e178c7b4/core-1.5.0-alpha01/AndroidManifest.xml:24:18-86
+14        android:debuggable="true"
+15        android:extractNativeLibs="false"
+16        android:supportsRtl="true"
+16-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:7:9-35
+17        android:testOnly="true"
+18        android:theme="@style/Theme.Scrobbler"
+18-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:8:9-47
+19        android:windowDisablePreview="true" >
+19-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:9:9-44
+20        <activity
+20-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:10:9-18:20
+21            android:name="com.vanpra.scrobbler.MainActivity"
+21-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:11:13-41
+22            android:theme="@style/Theme.Scrobbler" >
+22-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:12:13-51
+23            <intent-filter>
+23-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:13:13-17:29
+24                <action android:name="android.intent.action.MAIN" />
+24-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:14:17-69
+24-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:14:25-66
+25
+26                <category android:name="android.intent.category.LAUNCHER" />
+26-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:16:17-77
+26-->/home/pranav/work/music-scrobbler/androidApp/src/main/AndroidManifest.xml:16:27-74
+27            </intent-filter>
+28        </activity>
+29        <activity
+29-->[androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:25:9-28:79
+30            android:name="androidx.ui.tooling.preview.PreviewActivity"
+30-->[androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:26:13-71
+31            android:exported="true"
+31-->[androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:27:13-36
+32            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
+32-->[androidx.ui:ui-tooling:0.1.0-dev14] /home/pranav/.gradle/caches/transforms-2/files-2.1/db98cb3e7be0512e228a7f63fad77630/ui-tooling-0.1.0-dev14/AndroidManifest.xml:28:13-76
+33    </application>
+34
+35</manifest>

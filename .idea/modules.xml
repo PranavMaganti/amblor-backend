@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/scrobbler.iml" filepath="$PROJECT_DIR$/.idea/modules/scrobbler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/androidApp/scrobbler.androidApp.iml" filepath="$PROJECT_DIR$/.idea/modules/androidApp/scrobbler.androidApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/scrobbler.shared.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/scrobbler.shared.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/scrobbler.shared.androidAndroidTestRelease.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/scrobbler.shared.androidAndroidTestRelease.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/scrobbler.shared.commonMain.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/scrobbler.shared.commonMain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/shared/scrobbler.shared.commonTest.iml" filepath="$PROJECT_DIR$/.idea/modules/shared/scrobbler.shared.commonTest.iml" />
+    </modules>
+  </component>
+</project>

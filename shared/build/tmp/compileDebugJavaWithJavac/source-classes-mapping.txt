@@ -1,0 +1,2 @@
+com/vanpra/android/BuildConfig.java
+ com.vanpra.android.BuildConfig

@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.ui:ui-util:0.1.0-dev14@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/99ebb0b7e5d3e17c5971100d899ce088/ui-util-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/47c4d7b5dc6c66bce25b7a65b09805f9/jetified-ui-util-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/cef00843402e757a1413b52426b89245/ui-util-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/47c4d7b5dc6c66bce25b7a65b09805f9/jetified-ui-util-0.1.0-dev14/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/47c4d7b5dc6c66bce25b7a65b09805f9/jetified-ui-util-0.1.0-dev14/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.ui/ui-util/0.1.0-dev14/ed59787626458efb154b65bab1ebdf261c87c40b/ui-util-0.1.0-dev14-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

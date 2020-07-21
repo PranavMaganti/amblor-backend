@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.ui:ui-graphics:0.1.0-dev14@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b7f2c80890449050d2c4ae9fde411762/ui-graphics-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ce63c1e585b22a3ff7ca08d68702c444/jetified-ui-graphics-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/35c797db05c884262d3115610dfdd19b/ui-graphics-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ce63c1e585b22a3ff7ca08d68702c444/jetified-ui-graphics-0.1.0-dev14/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ce63c1e585b22a3ff7ca08d68702c444/jetified-ui-graphics-0.1.0-dev14/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.ui/ui-graphics/0.1.0-dev14/2c62ff1b88fe19bffcb874286249a0e5d2f4dcaa/ui-graphics-0.1.0-dev14-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.ui:ui-text-core:0.1.0-dev14@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/96014415fb22074d7123fcf2d67f4d59/ui-text-core-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eb47855559ee3688a0c29a3aeaf9364c/jetified-ui-text-core-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/563659c70eb84dd125a99cd90614a939/ui-text-core-0.1.0-dev14/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eb47855559ee3688a0c29a3aeaf9364c/jetified-ui-text-core-0.1.0-dev14/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/eb47855559ee3688a0c29a3aeaf9364c/jetified-ui-text-core-0.1.0-dev14/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.ui/ui-text-core/0.1.0-dev14/334f48899f389811bf25d5c9cc2a823126670453/ui-text-core-0.1.0-dev14-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

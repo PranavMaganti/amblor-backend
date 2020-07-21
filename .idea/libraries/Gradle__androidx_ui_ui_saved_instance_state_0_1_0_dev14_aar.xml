@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.ui:ui-saved-instance-state:0.1.0-dev14@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ba8eae1d0104b948d21f1dc275c0c472/ui-saved-instance-state-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d6d64c4155fd754b665be60f94d3e5d4/jetified-ui-saved-instance-state-0.1.0-dev14/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ed6bc63b83d141757a52f16f801c70a/ui-saved-instance-state-0.1.0-dev14/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d6d64c4155fd754b665be60f94d3e5d4/jetified-ui-saved-instance-state-0.1.0-dev14/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d6d64c4155fd754b665be60f94d3e5d4/jetified-ui-saved-instance-state-0.1.0-dev14/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.ui/ui-saved-instance-state/0.1.0-dev14/6b1fc32f5c4b53bd746d69bb479fc10541c18c0/ui-saved-instance-state-0.1.0-dev14-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
