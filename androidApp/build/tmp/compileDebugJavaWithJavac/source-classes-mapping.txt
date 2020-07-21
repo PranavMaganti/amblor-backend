@@ -1,2 +1,0 @@
-com/vanpra/scrobbler/BuildConfig.java
- com.vanpra.scrobbler.BuildConfig
