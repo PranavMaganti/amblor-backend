@@ -1,0 +1,7 @@
+server/auth/
+server/__pycache__/
+server/modules/__pycache__
+
+tests/__pycache__
+
+.vscode

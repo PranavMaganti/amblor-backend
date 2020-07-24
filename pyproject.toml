@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "server"
+name = "Amblor"
 version = "0.1.0"
 description = "A server for music scrobbling"
 authors = ["Pranav Maganti <pranav.maganti@gmail.com>"]
