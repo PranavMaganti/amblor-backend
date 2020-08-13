@@ -45,6 +45,11 @@ class _Token:
     token_type: str
 
 
+class _AddUserRequest(BaseModel):
+    username: str
+    firebase_token: str
+
+
 def _create_token(data: dict, expire_time: int = None) -> str:
     to_encode = data.copy()
     if expire_time != None:
@@ -104,16 +109,16 @@ async def get_token(request: Request, response: Response):
 
 # Returns boolean dependant on if the user is new
 @app.post("/users/add")
-async def user_exists(username: str, request: Request, response: Response):
-    if get_user(username) != None:
+async def user_exists(user: _AddUserRequest, response: Response):
+    if get_user(user.username) != None:
         response.status_code = 409
         return _error("Username taken")
 
-    body = await request.body()
     try:
-        idinfo = id_token.verify_firebase_token(body, requests.Request())
+        idinfo = id_token.verify_firebase_token(user.firebase_token, requests.Request())
         if idinfo["aud"] in CLIEND_IDS:
-            insert_user(username, idinfo["email"])
+            insert_user(user.username, idinfo["email"])
+            return {"success": "User Added"}
         else:
             response.status_code = 401
             return _error("The request was made from an invalid client")
