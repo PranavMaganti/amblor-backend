@@ -26,8 +26,8 @@ albums: Collection = db.albums
 artists: Collection = db.artists
 
 
-def insert_user(username: str, hashed_password: str):
-    data = {"username": username, "password": hashed_password, "scrobbles": []}
+def insert_user(username: str, email: str):
+    data = {"username": username, "email": email, "scrobbles": []}
 
     return users.insert_one(data).inserted_id
 
@@ -45,7 +45,7 @@ async def insert_unmatched_track(username: str, unmatched_track: UnmatchedTrack)
     if matched_track is None:
         client: SpotifyApiClient = await spotify_init()
         track: Track = await get_track_data(
-            UnmatchedTrack("FRIENDS (Acoustic)", "Anne-Marie & marshmello", 1000000),
+            unmatched_track,
             client,
         )
         track_json: dict = json.loads(track.to_json())
