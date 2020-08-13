@@ -699,7 +699,7 @@ idna = ">=2.0"
 multidict = ">=4.0"
 
 [metadata]
-content-hash = "9fd5d4eaf1c646b14cca5b8c11f32d158684690ea8a8ee0ff3bf2d0afe19c67f"
+content-hash = "b5401dcdfc4141fbfdac279ece3eb3ddf1ef62a7d80f5f6a8f1d53a8fe8528d6"
 python-versions = "^3.8"
 
 [metadata.files]

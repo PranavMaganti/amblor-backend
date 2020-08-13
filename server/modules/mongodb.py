@@ -31,10 +31,12 @@ def insert_user(username: str, hashed_password: str):
 
     return users.insert_one(data).inserted_id
 
+def is_user_new(email: str) -> bool:
+    return not bool(users.find_one({"email": email}))
+
 
 def get_user(username: str):
     return users.find_one({"username": username})
-
 
 async def insert_unmatched_track(username: str, unmatched_track: UnmatchedTrack):
     matched_track = tracks.find_one({"unmatched_name": unmatched_track.name})

@@ -1,4 +1,6 @@
-from typing import Optional
+import random
+import string
+from typing import Optional, Tuple
 
 
 def none_or_str(text: str) -> Optional[str]:
