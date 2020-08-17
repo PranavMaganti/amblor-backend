@@ -17,7 +17,7 @@ from pydantic import BaseModel
 from pymongo import database
 
 from modules.lastfm import import_tracks
-from modules.mongodb import get_user, insert_user, is_user_new
+from modules.firestore import get_user, insert_user, is_user_new
 
 # 460 - Username Taken (create user endpoint)
 
@@ -122,6 +122,7 @@ async def user_exists(user: _AddUserRequest, response: Response):
         else:
             response.status_code = 401
             return _error("The request was made from an invalid client")
+            
     except ValueError:
         response.status_code = 422
         return _error("The token supplied was invalid")

@@ -5,3 +5,4 @@ server/modules/__pycache__
 tests/__pycache__
 
 .vscode
+.venv
