@@ -2,22 +2,18 @@
 import asyncio
 import json
 from datetime import datetime, timedelta
-from os import access
-from typing import Optional
-from dataclasses_json.api import dataclass_json
 
 import jwt
+from dataclasses_json.api import dataclass_json
 from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
 from fastapi.security import OAuth2PasswordBearer
 from google.auth.transport import requests
 from google.oauth2 import id_token
 from jwt import PyJWTError
-from passlib.context import CryptContext
 from pydantic import BaseModel
-from pymongo import database
 
+from modules.mysql import get_user, insert_user, is_user_new, is_username_taken
 from modules.lastfm import import_tracks
-from modules.firestore import get_user, insert_user, is_user_new
 
 # 460 - Username Taken (create user endpoint)
 
@@ -110,7 +106,7 @@ async def get_token(request: Request, response: Response):
 # Returns boolean dependant on if the user is new
 @app.post("/users/add")
 async def user_exists(user: _AddUserRequest, response: Response):
-    if get_user(user.username) != None:
+    if is_username_taken(user.username):
         response.status_code = 409
         return _error("Username taken")
 
@@ -122,7 +118,7 @@ async def user_exists(user: _AddUserRequest, response: Response):
         else:
             response.status_code = 401
             return _error("The request was made from an invalid client")
-            
+
     except ValueError:
         response.status_code = 422
         return _error("The token supplied was invalid")
