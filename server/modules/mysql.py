@@ -16,42 +16,30 @@ connection = pymysql.connect(host=db_host,
                              cursorclass=pymysql.cursors.DictCursor)
 
 def insert_user(username: str, email: str) -> int:
-    try:
-        with connection.cursor() as cursor:
-            sql = "INSERT INTO User (username, email) VALUES (%s, %s)"
-            cursor.execute(sql, (username, email))
-            connection.commit()
-            return cursor.lastrowid
-    except:
-        return -1         
+    with connection.cursor() as cursor:
+        sql = "INSERT INTO User (username, email) VALUES (%s, %s)"
+        cursor.execute(sql, (username, email))
+        connection.commit()
+        return cursor.lastrowid
+     
 
 def is_user_new(email: str) -> bool:
-    try:
-        with connection.cursor() as cursor:
-            sql = "SELECT * FROM User WHERE email='%s'".format(email)
-            cursor.execute(sql)
-            result = cursor.fetchall()
-            return not result
+    with connection.cursor() as cursor:
+        sql = "SELECT * FROM User WHERE email='%s'".format(email)
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        return not result
     
-    except:
-        return False   
-
 def is_username_taken(username: str) -> bool:
-    try:
-        with connection.cursor() as cursor:
-            sql = "SELECT * FROM User WHERE username='%s'".format(username)
-            cursor.execute(sql)
-            result = cursor.fetchall()
-            return bool(result)
-    except:
-        return True 
+    with connection.cursor() as cursor:
+        sql = "SELECT * FROM User WHERE username='%s'".format(username)
+        cursor.execute(sql)
+        result = cursor.fetchall()
+        return bool(result)
 
 def get_user(username: str):
-    try:
-        with connection.cursor() as cursor:
-            sql = "SELECT * FROM User WHERE username='%s'".format(username)
-            cursor.execute(sql)
-            result = cursor.fetchone()
-            return result
-    except:
-        return True 
+    with connection.cursor() as cursor:
+        sql = "SELECT * FROM User WHERE username='%s'".format(username)
+        cursor.execute(sql)
+        result = cursor.fetchone()
+        return result
