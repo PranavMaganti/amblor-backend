@@ -22,8 +22,7 @@ def insert_user(username: str, email: str) -> int:
             cursor.execute(sql, (username, email))
             connection.commit()
             return cursor.lastrowid
-    finally:
-        connection.close()    
+    except:
         return -1         
 
 def is_user_new(email: str) -> bool:
@@ -33,9 +32,9 @@ def is_user_new(email: str) -> bool:
             cursor.execute(sql)
             result = cursor.fetchall()
             return not result
-    finally:
-        connection.close()      
-        return False
+    
+    except:
+        return False   
 
 def is_username_taken(username: str) -> bool:
     try:
@@ -44,9 +43,8 @@ def is_username_taken(username: str) -> bool:
             cursor.execute(sql)
             result = cursor.fetchall()
             return bool(result)
-    finally:
-        connection.close()      
-        return True
+    except:
+        return True 
 
 def get_user(username: str):
     try:
@@ -55,6 +53,5 @@ def get_user(username: str):
             cursor.execute(sql)
             result = cursor.fetchone()
             return result
-    finally:
-        connection.close()      
-        return True
+    except:
+        return True 

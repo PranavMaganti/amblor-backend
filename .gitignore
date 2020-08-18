@@ -1,4 +1,5 @@
 server/auth/
+server/queries
 server/__pycache__/
 server/modules/__pycache__
 
