@@ -25,21 +25,22 @@ def insert_user(username: str, email: str) -> int:
 
 def is_user_new(email: str) -> bool:
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM User WHERE email='%s'".format(email)
-        cursor.execute(sql)
+        sql = "SELECT * FROM User WHERE email=%s"
+        cursor.execute(sql, (email,))
         result = cursor.fetchall()
+        print(not result)
         return not result
     
 def is_username_taken(username: str) -> bool:
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM User WHERE username='%s'".format(username)
-        cursor.execute(sql)
+        sql = "SELECT * FROM User WHERE username=%s"
+        cursor.execute(sql, (username,))
         result = cursor.fetchall()
         return bool(result)
 
 def get_user(username: str):
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM User WHERE username='%s'".format(username)
-        cursor.execute(sql)
+        sql = "SELECT * FROM User WHERE username=%s"
+        cursor.execute(sql, (username,))
         result = cursor.fetchone()
         return result
