@@ -1,5 +1,6 @@
 import json
 from typing import List
+import asyncio
 
 from async_spotify import (
     SpotifyApiClient,
@@ -112,3 +113,5 @@ async def testing():
     )
     print(track)
     await client.close_client()
+
+
