@@ -4,7 +4,6 @@ import json
 from datetime import datetime, timedelta
 
 import jwt
-from dataclasses_json.api import dataclass_json
 from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
 from fastapi.security import OAuth2PasswordBearer
 from google.auth.transport import requests
@@ -34,7 +33,6 @@ app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
 
 
-@dataclass
 class _Token(BaseModel):
     access_token: str
     refresh_token: str
@@ -95,7 +93,12 @@ async def get_token(request: Request, response: Response):
             access_token = _create_token(email, ACCESS_TOKEN_EXPIRE_MINUTES)
             refresh_token = _create_token(email)
             expires_at = (datetime.utcnow() + timedelta(minutes=15)).timestamp()
-            return _Token(access_token, refresh_token, expires_at, "Bearer")
+            return {
+                "access_token": access_token,
+                "refresh_token": refresh_token,
+                "expires_at": expires_at,
+                "token_type": "Bearer",
+            }
 
         else:
             response.status_code = 401
