@@ -52,13 +52,14 @@ def _create_token(data: dict, expire_time: int = None) -> str:
     if expire_time != None:
         expire = datetime.utcnow() + timedelta(minutes=expire_time)
         to_encode.update({"exp": expire})
-    return str(jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM))
+
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM).decode('utf-8')
 
 
 async def _get_current_user(access_token: str = Depends(oauth2_scheme)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
-        detail="Could not token provided",
+        detail="Could not user token provided",
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
