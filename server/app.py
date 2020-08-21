@@ -150,5 +150,5 @@ async def user_exists(request: Request, response: Response):
 
 @app.get("/user/scrobbles")
 async def get_user_scrobbles(current_user: str = Depends(_get_current_user)):
-    print(current_user)
-    return Response(content="Hello", media_type="application/text")
+    scrobbles = get_scrobbles(current_user)
+    return scrobbles
