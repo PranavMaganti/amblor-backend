@@ -69,10 +69,10 @@ async def _get_current_user(access_token: str = Depends(oauth2_scheme)):
             raise credentials_exception
     except PyJWTError:
         raise credentials_exception
-    user = get_scrobbles(email)
-    if user is None:
+
+    if email is None:
         raise credentials_exception
-    return user
+    return email
 
 
 def _error(message: str) -> dict:
@@ -149,6 +149,6 @@ async def user_exists(request: Request, response: Response):
 
 
 @app.get("/user/scrobbles")
-async def get_user_scrobbles(current_user: List[dict] = Depends(_get_current_user)):
+async def get_user_scrobbles(current_user: str = Depends(_get_current_user)):
     print(current_user)
     return Response(content="Hello", media_type="application/text")
