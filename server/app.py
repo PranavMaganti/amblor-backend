@@ -1,7 +1,6 @@
 """ Main app """
 import asyncio
 import json
-from dataclasses import dataclass
 from datetime import datetime, timedelta
 
 import jwt
@@ -12,6 +11,7 @@ from google.auth.transport import requests
 from google.oauth2 import id_token
 from jwt import PyJWTError
 from pydantic import BaseModel
+from pydantic.dataclasses import dataclass
 
 from modules.lastfm import import_tracks
 from modules.mysql import get_user, insert_user, is_user_new, is_username_taken
@@ -33,6 +33,8 @@ with open("auth/client_ids.json") as readfile:
 app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
 
+
+@dataclass
 class _Token(BaseModel):
     access_token: str
     refresh_token: str
@@ -94,7 +96,7 @@ async def get_token(request: Request, response: Response):
             refresh_token = _create_token(email)
             expires_at = (datetime.utcnow() + timedelta(minutes=15)).timestamp()
             return _Token(access_token, refresh_token, expires_at, "Bearer")
-        
+
         else:
             response.status_code = 401
             return _error("The request was made from an invalid client")
