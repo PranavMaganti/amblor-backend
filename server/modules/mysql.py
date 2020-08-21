@@ -20,7 +20,7 @@ def insert_user(username: str, email: str) -> int:
         sql = "INSERT INTO User (username, email) VALUES (%s, %s)"
         cursor.execute(sql, (username, email))
         connection.commit()
-        return cursor.lastrowid
+    return cursor.lastrowid
      
 
 def is_user_new(email: str) -> bool:
@@ -28,19 +28,18 @@ def is_user_new(email: str) -> bool:
         sql = "SELECT * FROM User WHERE email=%s"
         cursor.execute(sql, (email,))
         result = cursor.fetchall()
-        print(not result)
-        return not result
+    return not result
     
 def is_username_taken(username: str) -> bool:
     with connection.cursor() as cursor:
         sql = "SELECT * FROM User WHERE username=%s"
         cursor.execute(sql, (username,))
         result = cursor.fetchall()
-        return bool(result)
+    return bool(result)
 
 def get_user(username: str):
     with connection.cursor() as cursor:
         sql = "SELECT * FROM User WHERE username=%s"
         cursor.execute(sql, (username,))
         result = cursor.fetchone()
-        return result
+    return result

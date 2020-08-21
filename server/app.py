@@ -4,6 +4,7 @@ import json
 from datetime import datetime, timedelta
 
 import jwt
+from dataclasses import dataclass
 from dataclasses_json.api import dataclass_json
 from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
 from fastapi.security import OAuth2PasswordBearer
@@ -34,6 +35,7 @@ oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
 
 
 @dataclass_json
+@dataclass
 class _Token:
     access_token: str
     refresh_token: str
