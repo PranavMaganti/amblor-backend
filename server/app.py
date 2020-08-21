@@ -2,18 +2,20 @@
 import asyncio
 import json
 from datetime import datetime, timedelta
+from typing import List
 
 import jwt
 from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
 from fastapi.security import OAuth2PasswordBearer
+from fastapi.responses import Response
 from google.auth.transport import requests
 from google.oauth2 import id_token
 from jwt import PyJWTError
 from pydantic import BaseModel
-from pydantic.dataclasses import dataclass
 
 from modules.lastfm import import_tracks
-from modules.mysql import get_user, insert_user, is_user_new, is_username_taken
+from modules.mysql import (get_scrobbles, insert_user, is_user_new,
+                           is_username_taken)
 
 # 460 - Username Taken (create user endpoint)
 
@@ -30,7 +32,7 @@ with open("auth/client_ids.json") as readfile:
     CLIEND_IDS = json.loads(readfile.read())["client_ids"]
 
 app = FastAPI()
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
 class _Token(BaseModel):
@@ -53,20 +55,20 @@ def _create_token(data: dict, expire_time: int = None) -> str:
     return str(jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM))
 
 
-async def _get_current_user(token: str = Depends(oauth2_scheme)):
+async def _get_current_user(access_token: str = Depends(oauth2_scheme)):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not token provided",
         headers={"WWW-Authenticate": "Bearer"},
     )
     try:
-        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-        username = payload.get("sub")
-        if username is None:
+        payload = jwt.decode(access_token, SECRET_KEY, algorithms=[ALGORITHM])
+        email = payload.get("sub")
+        if email is None:
             raise credentials_exception
     except PyJWTError:
         raise credentials_exception
-    user = get_user(username)
+    user = get_scrobbles(email)
     if user is None:
         raise credentials_exception
     return user
@@ -109,7 +111,7 @@ async def get_token(request: Request, response: Response):
 
 
 # Returns boolean dependant on if the user is new
-@app.post("/users/add")
+@app.post("/user/add")
 async def user_exists(user: _AddUserRequest, response: Response):
     if is_username_taken(user.username):
         response.status_code = 409
@@ -130,7 +132,7 @@ async def user_exists(user: _AddUserRequest, response: Response):
 
 
 # Returns boolean dependant on if the user is new
-@app.post("/users")
+@app.post("/user")
 async def user_exists(request: Request, response: Response):
     body = await request.body()
     try:
@@ -143,3 +145,9 @@ async def user_exists(request: Request, response: Response):
     except ValueError:
         response.status_code = 422
         return _error("The token supplied was invalid")
+
+
+@app.get("/user/scrobbles")
+async def get_user_scrobbles(current_user: List[dict] = Depends(_get_current_user)):
+    print(current_user)
+    return Response(content="Hello", media_type="application/text")

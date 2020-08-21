@@ -37,9 +37,17 @@ def is_username_taken(username: str) -> bool:
         result = cursor.fetchall()
     return bool(result)
 
-def get_user(username: str):
+def get_user(email: str):
     with connection.cursor() as cursor:
-        sql = "SELECT * FROM User WHERE username=%s"
-        cursor.execute(sql, (username,))
+        sql = "SELECT * FROM User WHERE email=%s"
+        cursor.execute(sql, (email,))
         result = cursor.fetchone()
+    return result
+
+def get_scrobbles(email: str):
+    with connection.cursor() as cursor:
+        with open("queries/select.sql", "r") as readfile:
+            sql = ' '.join(readfile.read().split())
+            cursor.execute(sql, (email,))
+            result = cursor.fetchall()
     return result
