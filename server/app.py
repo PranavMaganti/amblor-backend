@@ -7,7 +7,6 @@ from datetime import datetime, timedelta
 import jwt
 from dataclasses_json.api import dataclass_json
 from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
-from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordBearer
 from google.auth.transport import requests
 from google.oauth2 import id_token
@@ -34,10 +33,7 @@ with open("auth/client_ids.json") as readfile:
 app = FastAPI()
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
 
-
-@dataclass_json
-@dataclass
-class _Token:
+class _Token(BaseModel):
     access_token: str
     refresh_token: str
     expires_at: int
@@ -97,9 +93,8 @@ async def get_token(request: Request, response: Response):
             access_token = _create_token(email, ACCESS_TOKEN_EXPIRE_MINUTES)
             refresh_token = _create_token(email)
             expires_at = (datetime.utcnow() + timedelta(minutes=15)).timestamp()
-            return JSONResponse(
-                _Token(access_token, refresh_token, expires_at, "Bearer").to_json()
-            )
+            return _Token(access_token, refresh_token, expires_at, "Bearer")
+        
         else:
             response.status_code = 401
             return _error("The request was made from an invalid client")
