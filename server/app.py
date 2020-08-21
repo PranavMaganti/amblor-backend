@@ -95,7 +95,7 @@ async def get_token(request: Request, response: Response):
             email = {"sub": idinfo["email"]}
             access_token = _create_token(email, ACCESS_TOKEN_EXPIRE_MINUTES)
             refresh_token = _create_token(email)
-            expires_at = (datetime.utcnow() + timedelta(minutes=15)).timestamp
+            expires_at = (datetime.utcnow() + timedelta(minutes=15)).timestamp()
             return _Token(access_token, refresh_token, expires_at, "Bearer").to_json()
         else:
             response.status_code = 401
