@@ -1,20 +1,21 @@
 """ Main app """
 import asyncio
 import json
+from dataclasses import dataclass
 from datetime import datetime, timedelta
 
 import jwt
-from dataclasses import dataclass
 from dataclasses_json.api import dataclass_json
 from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
+from fastapi.responses import JSONResponse
 from fastapi.security import OAuth2PasswordBearer
 from google.auth.transport import requests
 from google.oauth2 import id_token
 from jwt import PyJWTError
 from pydantic import BaseModel
 
-from modules.mysql import get_user, insert_user, is_user_new, is_username_taken
 from modules.lastfm import import_tracks
+from modules.mysql import get_user, insert_user, is_user_new, is_username_taken
 
 # 460 - Username Taken (create user endpoint)
 
@@ -96,7 +97,9 @@ async def get_token(request: Request, response: Response):
             access_token = _create_token(email, ACCESS_TOKEN_EXPIRE_MINUTES)
             refresh_token = _create_token(email)
             expires_at = (datetime.utcnow() + timedelta(minutes=15)).timestamp()
-            return _Token(access_token, refresh_token, expires_at, "Bearer").to_json()
+            return JSONResponse(
+                _Token(access_token, refresh_token, expires_at, "Bearer").to_json()
+            )
         else:
             response.status_code = 401
             return _error("The request was made from an invalid client")
