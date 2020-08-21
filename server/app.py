@@ -83,7 +83,7 @@ async def import_lastfm(username: str):
     return {"response": "This will take 2-3 minutes"}
 
 
-@app.post("/token")
+@app.post("/token", response_model=_Token)
 async def get_token(request: Request, response: Response):
     body = await request.body()
     try:
