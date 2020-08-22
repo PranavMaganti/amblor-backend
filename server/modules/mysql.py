@@ -52,6 +52,7 @@ def get_scrobbles(email: str):
             sql = ' '.join(readfile.read().split())
             cursor.execute(sql, (email,))
             result = cursor.fetchall()
+
     return result
 
 
