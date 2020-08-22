@@ -1,12 +1,8 @@
 import json
-from typing import List
-import asyncio
+from typing import List, Optional
 
-from async_spotify import (
-    SpotifyApiClient,
-    SpotifyApiPreferences,
-    SpotifyAuthorisationToken,
-)
+from async_spotify import (SpotifyApiClient, SpotifyApiPreferences,
+                           SpotifyAuthorisationToken)
 
 from modules.models import Album, Artist, Track, UnmatchedTrack
 
@@ -81,7 +77,7 @@ async def parse_spotify_track(
 
 async def get_track_data(
     unmatched_track: UnmatchedTrack, spotify_client: SpotifyApiClient
-):
+) -> Optional[Track]:
     artists_str = [x.strip() for x in unmatched_track.artist.split("&")]
     tracks = []
 
@@ -113,5 +109,3 @@ async def testing():
     )
     print(track)
     await client.close_client()
-
-

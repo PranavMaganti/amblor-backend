@@ -5,17 +5,20 @@ from datetime import datetime, timedelta
 from typing import List
 
 import jwt
+from async_spotify import SpotifyApiClient
 from fastapi import Depends, FastAPI, HTTPException, Request, Response, status
-from fastapi.security import OAuth2PasswordBearer
 from fastapi.responses import Response
+from fastapi.security import OAuth2PasswordBearer
 from google.auth.transport import requests
 from google.oauth2 import id_token
 from jwt import PyJWTError
 from pydantic import BaseModel
 
 from modules.lastfm import import_tracks
-from modules.mysql import (get_scrobbles, insert_user, is_user_new,
+from modules.models import UnmatchedTrack
+from modules.mysql import (get_scrobbles, insert_scrobble, insert_user, is_user_new,
                            is_username_taken)
+from modules.spotify import get_track_data, spotify_init
 
 # 460 - Username Taken (create user endpoint)
 
@@ -53,7 +56,7 @@ def _create_token(data: dict, expire_time: int = None) -> str:
         expire = datetime.utcnow() + timedelta(minutes=expire_time)
         to_encode.update({"exp": expire})
 
-    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM).decode('utf-8')
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM).decode("utf-8")
 
 
 async def _get_current_user(access_token: str = Depends(oauth2_scheme)):
@@ -149,6 +152,18 @@ async def user_exists(request: Request, response: Response):
 
 
 @app.get("/user/scrobbles")
-async def get_user_scrobbles(current_user: List[dict] = Depends(_get_current_user)):
-    print(current_user)
-    return Response(content="Hello", media_type="application/text")
+async def get_user_scrobbles(current_user: str = Depends(_get_current_user)):
+    return get_scrobbles(current_user)
+
+
+@app.post("/user/scrobbles")
+async def add_user_scrobble(
+    track_name: str, artist_name: str, time: int, current_user: str = Depends(_get_current_user)
+):
+    client: SpotifyApiClient = await spotify_init()
+    track = await get_track_data(
+        UnmatchedTrack(track_name, artist_name, time), client
+    )
+    print(track)
+    insert_scrobble(track, current_user)
+    await client.close_client()

@@ -2,6 +2,8 @@ import pymysql
 import pymysql.cursors
 import json
 
+from modules.models import Track
+
 with open("auth/cloud_sql.json", "r") as file:
     creds = json.loads(file.read())
     db_username: str = creds["user"]
@@ -51,3 +53,7 @@ def get_scrobbles(email: str):
             cursor.execute(sql, (email,))
             result = cursor.fetchall()
     return result
+
+
+def insert_scrobble(track: Track, email: str):
+    pass
