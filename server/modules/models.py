@@ -17,6 +17,7 @@ class Artist:
     genres: Optional[List[str]] = field(default=None)
     spotify_id: Optional[str] = field(default=None)
 
+
 @dataclass_json
 @dataclass
 class Album:
@@ -25,6 +26,7 @@ class Album:
     name: str
     image: Optional[str] = field(default=None)
     spotify_id: Optional[str] = field(default=None)
+
 
 @dataclass_json
 @dataclass
@@ -38,9 +40,11 @@ class Track:
     preview: Optional[str] = field(default=None)
     spotify_id: Optional[str] = field(default=None)
 
+
 @dataclass
 class UnmatchedTrack:
     """ Data class to store unmatched track data """
+
     name: str
     artist: str
     time: float

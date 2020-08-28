@@ -12,6 +12,7 @@ def none_or_str(text: str) -> Optional[str]:
 
     return text
 
+
 def track_to_scrobble(t: Track) -> RawScrobble:
     artist_names = []
     artist_images = []
@@ -22,5 +23,13 @@ def track_to_scrobble(t: Track) -> RawScrobble:
         artist_images.append(item.image)
         artist_genres.append(",".join(item.genres))
 
-    return RawScrobble(t.time, t.name, t.preview, t.album.name, t.album.image,
-    "/".join(artist_names), " ".join(artist_images), "/".join(artist_genres))
+    return RawScrobble(
+        t.time,
+        t.name,
+        t.preview,
+        t.album.name,
+        t.album.image,
+        "/".join(artist_names),
+        " ".join(artist_images),
+        "/".join(artist_genres),
+    )
