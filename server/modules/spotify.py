@@ -1,4 +1,5 @@
 import json
+import re
 from typing import List, Optional
 
 from async_spotify import (SpotifyApiClient, SpotifyApiPreferences,
@@ -43,7 +44,7 @@ async def parse_spotify_track(
     album_name: str = track["album"]["name"]
     album_art: str = track["album"]["images"][0]["url"]
     album_id: str = track["album"]["id"]
-    album = Album(album_name, album_art, album_id, metadata_matched=True)
+    album = Album(album_name, album_art, album_id)
 
     artists: List[Artist] = []
 
@@ -60,18 +61,11 @@ async def parse_spotify_track(
                 spotify_id=artist_id,
                 image=artist_image,
                 genres=artist_genres,
-                metadata_matched=True,
             )
         )
 
     return Track(
-        track_name,
-        artists,
-        unmatched_track.time,
-        album,
-        track_preview,
-        track_id,
-        metadata_matched=True,
+        track_name, artists, unmatched_track.time, album, track_preview, track_id
     )
 
 
@@ -81,11 +75,11 @@ async def get_track_data(
     artists_str = [x.strip() for x in unmatched_track.artist.split("&")]
     tracks = []
 
+    cleaned_name = re.sub("\(.*\)", "", unmatched_track.name).strip()
+
     for artist in artists_str:
         search = await spotify_client.search.start(
-            "track:{0} artist:{1}".format(unmatched_track.name, artist),
-            ["track"],
-            limit=1,
+            "track:{0} artist:{1}".format(cleaned_name, artist), ["track"], limit=1,
         )
         tracks = search["tracks"]["items"]
 
@@ -93,9 +87,9 @@ async def get_track_data(
             break
 
     if not tracks:
-        artists = []
+        artists: List[Artist] = []
         for artist in artists_str:
-            artists.append(artist)
+            artists.append(Artist(artist))
 
         return Track(unmatched_track.name, artists, unmatched_track.time)
 

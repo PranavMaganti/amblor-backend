@@ -16,9 +16,6 @@ class Artist:
     image: Optional[str] = field(default=None)
     genres: Optional[List[str]] = field(default=None)
     spotify_id: Optional[str] = field(default=None)
-    mbid: Optional[str] = field(default=None)
-    metadata_matched: bool = field(default=False)
-
 
 @dataclass_json
 @dataclass
@@ -28,9 +25,6 @@ class Album:
     name: str
     image: Optional[str] = field(default=None)
     spotify_id: Optional[str] = field(default=None)
-    mbid: Optional[str] = field(default=None)
-    metadata_matched: bool = field(default=False)
-
 
 @dataclass_json
 @dataclass
@@ -43,14 +37,23 @@ class Track:
     album: Optional[Album] = field(default=None)
     preview: Optional[str] = field(default=None)
     spotify_id: Optional[str] = field(default=None)
-    mbid: Optional[str] = field(default=None)
-    metadata_matched: bool = field(default=False)
-
 
 @dataclass
 class UnmatchedTrack:
     """ Data class to store unmatched track data """
-
     name: str
     artist: str
     time: float
+
+
+@dataclass_json
+@dataclass
+class RawScrobble:
+    time: int
+    name: str
+    preview_url: str
+    album_name: str
+    image: str
+    artist_names: str
+    artist_images: str
+    artist_genres: str
