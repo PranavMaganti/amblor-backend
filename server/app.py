@@ -7,8 +7,7 @@ from typing import List
 
 import jwt
 from async_spotify import SpotifyApiClient
-from fastapi import (Body, Depends, FastAPI, HTTPException, Request, Response,
-                     status)
+from fastapi import Body, Depends, FastAPI, HTTPException, Request, Response, status
 from fastapi.responses import Response
 from fastapi.security import OAuth2PasswordBearer
 from google.auth.transport import requests
@@ -18,9 +17,16 @@ from pydantic import BaseModel
 
 from modules.lastfm import import_tracks
 from modules.models import RawScrobble, UnmatchedTrack
-from modules.mysql import (create_connection, get_matched_track, get_scrobbles,
-                           insert_matched_scrobble, insert_scrobble,
-                           insert_user, is_user_new, is_username_taken)
+from modules.mysql import (
+    create_connection,
+    get_matched_track,
+    get_scrobbles,
+    insert_matched_scrobble,
+    insert_scrobble,
+    insert_user,
+    is_user_new,
+    is_username_taken,
+)
 from modules.spotify import get_track_data, spotify_init
 from modules.util import track_to_scrobble
 
