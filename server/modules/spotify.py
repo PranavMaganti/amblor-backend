@@ -2,11 +2,8 @@ import json
 import re
 from typing import List, Optional
 
-from async_spotify import (
-    SpotifyApiClient,
-    SpotifyApiPreferences,
-    SpotifyAuthorisationToken,
-)
+from async_spotify import (SpotifyApiClient, SpotifyApiPreferences,
+                           SpotifyAuthorisationToken)
 
 from modules.models import Album, Artist, Track, UnmatchedTrack
 
@@ -78,7 +75,7 @@ async def get_track_data(
     artists_str = [x.strip() for x in unmatched_track.artist.split("&")]
     tracks = []
 
-    cleaned_name = re.sub("\(.*\)", "", unmatched_track.name).strip()
+    cleaned_name = re.sub("\((feat|From).*\)", "", unmatched_track.name).strip()
 
     for artist in artists_str:
         search = await spotify_client.search.start(

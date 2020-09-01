@@ -7,7 +7,8 @@ from typing import List
 
 import jwt
 from async_spotify import SpotifyApiClient
-from fastapi import Body, Depends, FastAPI, HTTPException, Request, Response, status
+from fastapi import (Body, Depends, FastAPI, HTTPException, Request, Response,
+                     status)
 from fastapi.responses import Response
 from fastapi.security import OAuth2PasswordBearer
 from google.auth.transport import requests
@@ -17,15 +18,9 @@ from pydantic import BaseModel
 
 from modules.lastfm import import_tracks
 from modules.models import RawScrobble, UnmatchedTrack
-from modules.mysql import (
-    get_matched_track,
-    get_scrobbles,
-    insert_matched_scrobble,
-    insert_scrobble,
-    insert_user,
-    is_user_new,
-    is_username_taken,
-)
+from modules.mysql import (create_connection, get_matched_track, get_scrobbles,
+                           insert_matched_scrobble, insert_scrobble,
+                           insert_user, is_user_new, is_username_taken)
 from modules.spotify import get_track_data, spotify_init
 from modules.util import track_to_scrobble
 
@@ -152,14 +147,15 @@ async def refresh_token(refresh_token: str = Body("", embed=True)):
 # Returns boolean dependant on if the user is new
 @app.post("/user/add")
 async def user_exists(user: _AddUserRequest, response: Response):
-    if is_username_taken(user.username):
+    conn = create_connection()
+    if is_username_taken(conn, user.username):
         response.status_code = 409
         return _error("Username taken")
 
     try:
         idinfo = id_token.verify_firebase_token(user.firebase_token, requests.Request())
         if idinfo["aud"] in CLIEND_IDS:
-            insert_user(user.username, idinfo["email"])
+            insert_user(conn, user.username, idinfo["email"])
             return {"success": "User Added"}
         else:
             response.status_code = 401
@@ -169,15 +165,18 @@ async def user_exists(user: _AddUserRequest, response: Response):
         response.status_code = 422
         return _error("The token supplied was invalid")
 
+    conn.close()
+
 
 # Returns boolean dependant on if the user is new
 @app.post("/user")
 async def user_exists(request: Request, response: Response):
+    conn = create_connection()
     body = await request.body()
     try:
         idinfo = id_token.verify_firebase_token(body, requests.Request())
         if idinfo["aud"] in CLIEND_IDS:
-            return is_user_new(idinfo["email"])
+            return is_user_new(conn, idinfo["email"])
         else:
             response.status_code = 401
             return _error("The request was made from an invalid client")
@@ -185,27 +184,43 @@ async def user_exists(request: Request, response: Response):
         response.status_code = 422
         return _error("The token supplied was invalid")
 
+    conn.close()
+
 
 @app.get("/user/scrobble")
 async def get_user_scrobbles(
     start_time: int = 0, current_user: str = Depends(_get_current_user)
 ):
-    return get_scrobbles(current_user, start_time)
+    conn = create_connection()
+    scrobbles = get_scrobbles(conn, current_user, start_time)
+    conn.close()
+    return scrobbles
 
 
 @app.post("/user/scrobble")
 async def add_user_scrobble(
     scrobble: _Scrobble, current_user: str = Depends(_get_current_user)
 ):
-    matched_track = get_matched_track(scrobble.track_name)
-    if not matched_track:
-        client: SpotifyApiClient = await spotify_init()
-        track = await get_track_data(
-            UnmatchedTrack(scrobble.track_name, scrobble.artist_name, scrobble.time),
-            client,
-        )
-        await client.close_client()
-        return insert_scrobble(track, current_user, scrobble.time, scrobble.track_name)
-    else:
-        matched_track_id = matched_track["track_id"]
-        return insert_matched_scrobble(current_user, matched_track_id, scrobble.time)
+    conn = create_connection()
+    matched_track = get_matched_track(conn, scrobble.track_name)
+    try:
+        if not matched_track:
+            client: SpotifyApiClient = await spotify_init()
+            track = await get_track_data(
+                UnmatchedTrack(
+                    scrobble.track_name, scrobble.artist_name, scrobble.time
+                ),
+                client,
+            )
+            await client.close_client()
+            return insert_scrobble(
+                conn, track, current_user, scrobble.time, scrobble.track_name
+            )
+        else:
+            matched_track_id = matched_track["track_id"]
+            return insert_matched_scrobble(
+                conn, current_user, matched_track_id, scrobble.time
+            )
+
+    finally:
+        conn.close()

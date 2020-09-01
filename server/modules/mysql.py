@@ -13,17 +13,19 @@ with open("auth/cloud_sql.json", "r") as file:
     db_password: str = creds["password"]
     db_host: str = creds["host"]
 
-connection = pymysql.connect(
-    host=db_host,
-    user=db_username,
-    password=db_password,
-    db="amblor",
-    charset="utf8mb4",
-    cursorclass=pymysql.cursors.DictCursor,
-)
+
+def create_connection() -> pymysql.Connection:
+    return pymysql.connect(
+        host=db_host,
+        user=db_username,
+        password=db_password,
+        db="amblor",
+        charset="utf8mb4",
+        cursorclass=pymysql.cursors.DictCursor,
+    )
 
 
-def insert_user(username: str, email: str) -> int:
+def insert_user(connection: pymysql.Connection, username: str, email: str) -> int:
     with connection.cursor() as cursor:
         sql = "INSERT INTO User (username, email) VALUES (%s, %s)"
         cursor.execute(sql, (username, email))
@@ -31,7 +33,7 @@ def insert_user(username: str, email: str) -> int:
     return cursor.lastrowid
 
 
-def is_user_new(email: str) -> bool:
+def is_user_new(connection: pymysql.Connection, email: str) -> bool:
     with connection.cursor() as cursor:
         sql = "SELECT * FROM User WHERE email=%s"
         cursor.execute(sql, (email,))
@@ -40,7 +42,7 @@ def is_user_new(email: str) -> bool:
     return not result
 
 
-def is_username_taken(username: str) -> bool:
+def is_username_taken(connection: pymysql.Connection, username: str) -> bool:
     with connection.cursor() as cursor:
         sql = "SELECT * FROM User WHERE username=%s"
         cursor.execute(sql, (username,))
@@ -49,7 +51,7 @@ def is_username_taken(username: str) -> bool:
     return bool(result)
 
 
-def get_user(email: str):
+def get_user(connection: pymysql.Connection, email: str):
     with connection.cursor() as cursor:
         sql = "SELECT * FROM User WHERE email=%s"
         cursor.execute(sql, (email,))
@@ -58,7 +60,7 @@ def get_user(email: str):
     return result
 
 
-def get_scrobbles(email: str, start_time: int):
+def get_scrobbles(connection: pymysql.Connection, email: str, start_time: int):
     with connection.cursor() as cursor:
         with open("queries/select.sql", "r") as readfile:
             sql = " ".join(readfile.read().split())
@@ -134,7 +136,11 @@ def _insert_artist_set(cursor: pymysql.cursors.Cursor, artist_ids: List[int]) ->
 
 
 def insert_scrobble(
-    track: Track, email: str, time: int, unmatched_name: str
+    connection: pymysql.Connection,
+    track: Track,
+    email: str,
+    time: int,
+    unmatched_name: str,
 ) -> RawScrobble:
     with connection.cursor() as cursor:
         album_id = _insert_album(cursor, track.album)
@@ -170,7 +176,9 @@ def insert_scrobble(
     return result
 
 
-def insert_matched_scrobble(email: str, track_id: int, time: int):
+def insert_matched_scrobble(
+    connection: pymysql.Connection, email: str, track_id: int, time: int
+):
     with connection.cursor() as cursor:
         user_query = "SELECT user_id FROM User WHERE email=%s"
         cursor.execute(user_query, (email,))
@@ -195,7 +203,9 @@ def insert_matched_scrobble(email: str, track_id: int, time: int):
     return result
 
 
-def get_matched_track(unmatched_name: str) -> Optional[RawScrobble]:
+def get_matched_track(
+    connection: pymysql.Connection, unmatched_name: str
+) -> Optional[RawScrobble]:
     with connection.cursor() as cursor:
         sql = "SELECT * FROM Track WHERE Track.unmatched_name='%s'" % (unmatched_name)
         cursor.execute(sql)
