@@ -23,7 +23,7 @@ object DatabaseFactory {
 
     private fun hikari(): HikariDataSource {
         val config = HikariConfig()
-        config.driverClassName = "com.mysql.jdbc.Driver"
+        config.driverClassName = "com.mysql.cj.jdbc.Driver"
         config.jdbcUrl = "jdbc:mysql://35.246.27.64:3306/amblor"
         config.username = System.getenv("SQL_USERNAME")
         config.password = System.getenv("SQL_PASSWORD")
