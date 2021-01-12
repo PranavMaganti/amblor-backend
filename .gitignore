@@ -1,9 +1,6 @@
-server/auth/
-server/queries
-server/__pycache__/
-server/modules/__pycache__
+build/
+.idea/
+.gradle/
+.vscode/
 
-tests/__pycache__
-
-.vscode
-.venv
+local.properties
