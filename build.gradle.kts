@@ -55,6 +55,10 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "14"
 }
 
+tasks.create("stage") {
+    dependsOn("installDist")
+}
+
 application {
     mainClassName = "ServerKt"
 }

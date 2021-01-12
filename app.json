@@ -1,0 +1,5 @@
+{
+  "name": "Amblor",
+  "description": "Backend for Amblor",
+  "image": "heroku/java"
+}

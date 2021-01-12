@@ -29,8 +29,10 @@ import com.google.firebase.FirebaseOptions
 
 @KtorExperimentalAPI
 fun main(args: Array<String>) {
+    val port = System.getenv("PORT")?.toInt() ?: 23567
+
     embeddedServer(
-        Netty, watchPaths = listOf(), port = 8080,
+        Netty, watchPaths = listOf(), port = port,
         module = Application::mainModule
     ).start(true)
 }

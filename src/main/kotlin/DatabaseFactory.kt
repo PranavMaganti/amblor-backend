@@ -25,8 +25,8 @@ object DatabaseFactory {
         val config = HikariConfig()
         config.driverClassName = "com.mysql.jdbc.Driver"
         config.jdbcUrl = "jdbc:mysql://35.246.27.64:3306/amblor"
-        config.username = "pranav"
-        config.password = "PDL4wyAaD4kIiJfr"
+        config.username = System.getenv("SQL_USERNAME")
+        config.password = System.getenv("SQL_PASSWORD")
         config.maximumPoolSize = 10
         config.isAutoCommit = false
         config.transactionIsolation = "TRANSACTION_REPEATABLE_READ"
