@@ -1,9 +1,8 @@
-server/auth/
-server/queries
-server/__pycache__/
-server/modules/__pycache__
+build/
+.idea/
+.gradle/
+.vscode/
 
-tests/__pycache__
+local.properties
 
-.vscode
-.venv
+src/main/kotlin/Credentials.kt

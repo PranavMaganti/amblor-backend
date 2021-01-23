@@ -1,0 +1,1 @@
+web: ./build/install/amblor-backend/bin/amblor-backend

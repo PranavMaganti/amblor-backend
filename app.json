@@ -1,0 +1,5 @@
+{
+  "name": "Amblor Backend",
+  "description": "Backend server for the Amblor music scrobbling service",
+  "image": "heroku/java"
+}
