@@ -1,3 +1,5 @@
+package db
+
 import org.jetbrains.exposed.dao.id.IntIdTable
 
 object UserTable : IntIdTable("user", "user_id") {
@@ -14,7 +16,7 @@ object AlbumTable : IntIdTable("album", "album_id") {
 object ArtistTable : IntIdTable("artist", "artist_id") {
     val name = varchar("name", 100)
     val image = varchar("image", 500)
-    val genreSetId = integer("genre_set_id")
+    val genreSetId = reference("genre_id", GenreTable)
     val spotifyId = varchar("spotify_id", 30)
 }
 
@@ -39,7 +41,6 @@ object ScrobbleTable : IntIdTable("scrobble", "scrobble_id") {
     val time = uinteger("time")
 }
 
-object GenreSetTable : IntIdTable("genre_set", "genre_id") {
-    val genreName = varchar("genre_name", 50)
-    val setId = integer("set_id")
+object GenreTable : IntIdTable("genre", "genre_id") {
+    val genres = varchar("genres", 200)
 }

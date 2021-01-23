@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.4.21"
     kotlin("plugin.serialization") version "1.4.21"
+    id("org.jmailen.kotlinter") version "3.3.0"
     application
 }
 
@@ -27,14 +28,19 @@ dependencies {
     implementation("io.ktor:ktor-server-tests:$ktorVersion")
     implementation("io.ktor:ktor-html-builder:$ktorVersion")
     implementation("io.ktor:ktor-serialization:$ktorVersion")
+    implementation("io.ktor:ktor-auth:$ktorVersion")
+    implementation("io.ktor:ktor-auth-jwt:$ktorVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.2")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.0.1")
+
+    implementation("com.adamratzman:spotify-api-kotlin-core:3.4.03")
 
     implementation("org.jetbrains.exposed:exposed-core:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-dao:$exposedVersion")
     implementation("org.jetbrains.exposed:exposed-jdbc:$exposedVersion")
     implementation("mysql:mysql-connector-java:8.0.22")
     implementation("com.zaxxer:HikariCP:3.4.5")
+    implementation("com.google.cloud.sql:mysql-socket-factory-connector-j-8:1.2.0")
 
     implementation("com.google.firebase:firebase-admin:7.1.0")
 
@@ -51,12 +57,12 @@ tasks.test {
     useJUnitPlatform()
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "14"
-}
-
 tasks.create("stage") {
     dependsOn("installDist")
+}
+
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "15"
 }
 
 application {

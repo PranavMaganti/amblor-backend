@@ -1,3 +1,5 @@
+package db
+
 import org.jetbrains.exposed.dao.IntEntity
 import org.jetbrains.exposed.dao.IntEntityClass
 import org.jetbrains.exposed.dao.id.EntityID
@@ -5,59 +7,57 @@ import org.jetbrains.exposed.dao.id.EntityID
 class UserEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<UserEntity>(UserTable)
 
-    var username by UserTable.username
-    var email by UserTable.email
+    var username_ by UserTable.username
+    var email_ by UserTable.email
 }
 
 class AlbumEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<AlbumEntity>(AlbumTable)
 
-    var name by AlbumTable.name
-    var image by AlbumTable.image
-    var spotifyId by AlbumTable.spotifyId
+    var name_ by AlbumTable.name
+    var image_ by AlbumTable.image
+    var spotifyId_ by AlbumTable.spotifyId
 }
 
 class ArtistEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<ArtistEntity>(ArtistTable)
 
-    var name by ArtistTable.name
-    var image by ArtistTable.image
-    var genreSetId by ArtistTable.genreSetId
-    var spotifyId by ArtistTable.spotifyId
+    var name_ by ArtistTable.name
+    var image_ by ArtistTable.image
+    var genreId_ by ArtistTable.genreSetId
+    var spotifyId_ by ArtistTable.spotifyId
 }
 
 
 class ArtistSetEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<ArtistSetEntity>(ArtistSetTable)
 
-    var artistId by ArtistSetTable.artistId
-    var setId by ArtistSetTable.setId
+    var artistId_ by ArtistSetTable.artistId
+    var setId_ by ArtistSetTable.setId
 }
 
 class TrackEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<TrackEntity>(TrackTable)
 
-    var name by TrackTable.name
-    var unmatchedName by TrackTable.unmatchedName
-    var albumId by TrackTable.albumId
-    var spotifyId by TrackTable.spotifyId
-    var preview by TrackTable.preview
-    var artistSetId by TrackTable.artistSetId
+    var name_ by TrackTable.name
+    var unmatchedName_ by TrackTable.unmatchedName
+    var albumId_ by TrackTable.albumId
+    var spotifyId_ by TrackTable.spotifyId
+    var preview_ by TrackTable.preview
+    var artistSetId_ by TrackTable.artistSetId
 }
 
 class ScrobbleEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<ScrobbleEntity>(ScrobbleTable)
 
-    var userId by ScrobbleTable.userId
-    var trackId by ScrobbleTable.trackId
+    var userId_ by ScrobbleTable.userId
+    var trackId_ by ScrobbleTable.trackId
     @ExperimentalUnsignedTypes
-    var time by ScrobbleTable.time
+    var time_ by ScrobbleTable.time
 }
 
 class GenreSetEntity(id: EntityID<Int>) : IntEntity(id) {
-    companion object : IntEntityClass<GenreSetEntity>(GenreSetTable)
-
-    var genreName by GenreSetTable.genreName
-    var setId by GenreSetTable.setId
+    companion object : IntEntityClass<GenreSetEntity>(GenreTable)
+    var genres_ by GenreTable.genres
 }
 

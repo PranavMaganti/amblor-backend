@@ -4,3 +4,5 @@ build/
 .vscode/
 
 local.properties
+
+src/main/kotlin/Credentials.kt

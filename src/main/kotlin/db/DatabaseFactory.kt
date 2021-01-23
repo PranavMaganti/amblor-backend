@@ -1,3 +1,5 @@
+package db
+
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
 import org.jetbrains.exposed.sql.Database
@@ -6,6 +8,8 @@ import org.jetbrains.exposed.sql.transactions.experimental.newSuspendedTransacti
 import org.jetbrains.exposed.sql.transactions.transaction
 
 object DatabaseFactory {
+    private val CLOUD_SQL_CONNECTION_NAME = System.getenv("CLOUD_SQL_CONNECTION_NAME")
+
     fun init() {
         Database.connect(hikari())
         transaction {
@@ -16,7 +20,7 @@ object DatabaseFactory {
                 ArtistSetTable,
                 TrackTable,
                 ScrobbleTable,
-                GenreSetTable
+                GenreTable
             )
         }
     }
@@ -25,11 +29,15 @@ object DatabaseFactory {
         val config = HikariConfig()
         config.driverClassName = "com.mysql.cj.jdbc.Driver"
         config.jdbcUrl = "jdbc:mysql://35.246.27.64:3306/amblor"
-        config.username = System.getenv("SQL_USERNAME")
-        config.password = System.getenv("SQL_PASSWORD")
+        config.username = System.getenv("MYSQL_USERNAME")
+        config.password = System.getenv("MYSQL_PASSWORD")
         config.maximumPoolSize = 10
         config.isAutoCommit = false
         config.transactionIsolation = "TRANSACTION_REPEATABLE_READ"
+
+        config.addDataSourceProperty("socketFactory", "com.google.cloud.sql.mysql.SocketFactory")
+        config.addDataSourceProperty("cloudSqlInstance", CLOUD_SQL_CONNECTION_NAME)
+
         config.validate()
         return HikariDataSource(config)
     }
@@ -38,5 +46,4 @@ object DatabaseFactory {
         block: suspend () -> T
     ): T =
         newSuspendedTransaction { block() }
-
 }
