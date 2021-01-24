@@ -51,9 +51,7 @@ fun Application.mainModule() {
 
     val jwkIssuer = URL("https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com")
     val jwtIssuer = "https://securetoken.google.com/amblor"
-    val jwkProvider = JwkProviderBuilder(jwkIssuer)
-        .cached(10, 24, TimeUnit.HOURS)
-        .build()
+    val jwkProvider = JwkProviderBuilder(jwkIssuer).build()
 
     install(Authentication) {
         jwt(name = "main") {
@@ -78,9 +76,11 @@ fun Application.mainModule() {
     }
 
     routing {
-        authenticate("main") {
-            route("/users") { users() }
-            route("/scrobble") { scrobble() }
+        route("/api/v1") {
+            authenticate("main") {
+                route("/users") { users() }
+                route("/scrobble") { scrobble() }
+            }
         }
     }
 }
