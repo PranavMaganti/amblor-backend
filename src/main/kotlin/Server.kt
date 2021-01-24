@@ -1,5 +1,6 @@
 import com.auth0.jwk.JwkProviderBuilder
 import com.auth0.jwt.interfaces.Payload
+import com.mysql.cj.log.Slf4JLogger
 import db.DatabaseFactory
 import db.DatabaseRepository
 import io.ktor.application.Application
@@ -26,11 +27,14 @@ import io.ktor.server.netty.Netty
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.runBlocking
 import models.NewUser
+import models.ScrobbleQuery
+import org.koin.dsl.module
 import org.slf4j.event.Level
+import org.koin.ktor.ext.Koin
+import org.koin.ktor.ext.inject
 import java.net.URL
 import java.time.Instant
 import java.util.Date
-import java.util.concurrent.TimeUnit
 
 @KtorExperimentalAPI
 fun main(args: Array<String>) {
@@ -52,7 +56,11 @@ fun Application.mainModule() {
     }
 
     install(CallLogging) {
-        level = Level.TRACE
+        level = Level.ERROR
+    }
+
+    install(Koin) {
+        modules(amblorAppModule)
     }
 
     val jwkIssuer = URL("https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com")
@@ -94,14 +102,23 @@ fun Application.mainModule() {
 fun Payload.getEmail(): String = this.getClaim("email").asString()
 
 fun Route.scrobble() {
+    val dbRepository by inject<DatabaseRepository>()
+
     post {
         val payload: Payload = call.principal<JWTPrincipal>()!!.payload
-        println(payload.getEmail())
+        val scrobbleQuery = call.receive<ScrobbleQuery>()
+        SpotifyRepository.matchTrack(scrobbleQuery)?.let {
+            dbRepository.insertScrobble(it, payload.getEmail())
+            call.respond(HttpStatusCode.OK)
+        } ?: run {
+            println("Can't match song: ${scrobbleQuery.track_name} - ${scrobbleQuery.artist_name}")
+            call.respond(HttpStatusCode.BadRequest)
+        }
     }
 }
 
 fun Route.users() {
-    val dbRepository = DatabaseRepository()
+    val dbRepository by inject<DatabaseRepository>()
 
     post {
         val userData = call.receive<NewUser>()

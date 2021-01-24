@@ -11,7 +11,6 @@ import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.SortOrder
 
 class DatabaseRepository {
-
     init {
         DatabaseFactory.init()
     }

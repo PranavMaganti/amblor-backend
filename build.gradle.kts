@@ -55,6 +55,15 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
 }
 
+tasks.withType<KotlinCompile>().all {
+    kotlinOptions {
+        freeCompilerArgs = listOf(
+            "-Xopt-in=kotlin.Experimental",
+            "-Xopt-in=kotlin.ExperimentalUnsignedTypes"
+        )
+    }
+}
+
 tasks.test {
     useJUnitPlatform()
 }
