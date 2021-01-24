@@ -10,6 +10,7 @@ import io.ktor.auth.authenticate
 import io.ktor.auth.jwt.JWTPrincipal
 import io.ktor.auth.jwt.jwt
 import io.ktor.auth.principal
+import io.ktor.features.CallLogging
 import io.ktor.features.ContentNegotiation
 import io.ktor.http.HttpStatusCode
 import io.ktor.request.receive
@@ -25,6 +26,7 @@ import io.ktor.server.netty.Netty
 import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.runBlocking
 import models.NewUser
+import org.slf4j.event.Level
 import java.net.URL
 import java.time.Instant
 import java.util.Date
@@ -47,6 +49,10 @@ fun Application.mainModule() {
 
     install(ContentNegotiation) {
         json()
+    }
+
+    install(CallLogging) {
+        level = Level.TRACE
     }
 
     val jwkIssuer = URL("https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com")
