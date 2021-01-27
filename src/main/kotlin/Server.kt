@@ -15,6 +15,7 @@ import io.ktor.http.HttpStatusCode
 import io.ktor.request.receive
 import io.ktor.response.respond
 import io.ktor.routing.Route
+import io.ktor.routing.get
 import io.ktor.routing.head
 import io.ktor.routing.post
 import io.ktor.routing.route
@@ -111,6 +112,13 @@ fun Route.scrobble() {
             println("Can't match song: ${scrobbleQuery.track_name} - ${scrobbleQuery.artist_name}")
             call.respond(HttpStatusCode.BadRequest)
         }
+    }
+
+    get {
+        val payload: Payload = call.principal<JWTPrincipal>()!!.payload
+        val scrobbles = dbRepository.getAllScrobbles(payload.getEmail())
+
+        call.respond(HttpStatusCode.OK, scrobbles)
     }
 }
 

@@ -1,17 +1,18 @@
 package db
 
 import MatchedScrobble
-import SpotifyRepository
 import com.adamratzman.spotify.models.Artist
 import com.adamratzman.spotify.models.SimpleAlbum
 import com.adamratzman.spotify.models.Track
 import db.DatabaseFactory.dbQuery
 import models.ScrobbleData
-import models.ScrobbleQuery
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.Expression
 import org.jetbrains.exposed.sql.JoinType
+import org.jetbrains.exposed.sql.Op
+import org.jetbrains.exposed.sql.Query
 import org.jetbrains.exposed.sql.SortOrder
+import org.jetbrains.exposed.sql.SqlExpressionBuilder
 import org.jetbrains.exposed.sql.alias
 import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.groupConcat
@@ -137,49 +138,64 @@ class DatabaseRepository {
             }.id
         }
 
-    private suspend fun getScrobbleById(userId: EntityID<Int>, id: EntityID<Int>) = dbQuery {
-        val artistNames = ArtistTable.name.groupConcat("/").alias("aritst_names")
-        val artistImages = ArtistTable.image.groupConcat(" ").alias("artist_images")
-        val artistGenres = GenreTable.genres.groupConcat("/").alias("artist_genres")
-        val groupedArtist = ArtistSetTable
-            .innerJoin(ArtistTable)
-            .innerJoin(GenreTable)
-            .slice(ArtistSetTable.setId, artistNames, artistImages, artistGenres)
-            .selectAll()
-            .groupBy(ArtistSetTable.setId)
-            .alias("grouped_artists")
-
-        val rawScrobble = ScrobbleTable
-            .innerJoin(TrackTable)
-            .innerJoin(AlbumTable)
-            .join(
-                groupedArtist,
-                JoinType.INNER,
-                additionalConstraint = { groupedArtist[ArtistSetTable.setId] eq TrackTable.artistSetId }
-            )
-            .leftJoin(UserTable)
-            .slice(
-                ScrobbleTable.time,
-                TrackTable.name,
-                TrackTable.preview,
-                AlbumTable.name,
-                AlbumTable.image,
-                groupedArtist[artistNames],
-                groupedArtist[artistImages],
-                groupedArtist[artistGenres]
-            )
-            .select { (UserTable.id eq userId) and (ScrobbleTable.id eq id) }
-            .first()
-
-        val artistAliases =
-            ArtistAliases(groupedArtist[artistNames], groupedArtist[artistImages], groupedArtist[artistGenres])
-        return@dbQuery ScrobbleData.fromRowResult(rawScrobble, artistAliases)
+    suspend fun getAllScrobbles(email: String): List<ScrobbleData> = dbQuery {
+        return@dbQuery queryScrobbles { (UserTable.email eq email) }
     }
+
+    private suspend fun getScrobbleById(userId: EntityID<Int>, id: EntityID<Int>) = dbQuery {
+        return@dbQuery queryScrobbles(1) { (UserTable.id eq userId) and (ScrobbleTable.id eq id) }[0]
+    }
+
+    private suspend fun queryScrobbles(
+        limit: Int? = null,
+        where: SqlExpressionBuilder.() -> Op<Boolean>
+    ): List<ScrobbleData> =
+        dbQuery {
+            val artistNames = ArtistTable.name.groupConcat("/").alias("aritst_names")
+            val artistImages = ArtistTable.image.groupConcat(" ").alias("artist_images")
+            val artistGenres = GenreTable.genres.groupConcat("/").alias("artist_genres")
+            val groupedArtist = ArtistSetTable
+                .innerJoin(ArtistTable)
+                .innerJoin(GenreTable)
+                .slice(ArtistSetTable.setId, artistNames, artistImages, artistGenres)
+                .selectAll()
+                .groupBy(ArtistSetTable.setId)
+                .alias("grouped_artists")
+
+            var rawScrobbles: Query = ScrobbleTable
+                .innerJoin(TrackTable)
+                .innerJoin(AlbumTable)
+                .join(
+                    groupedArtist,
+                    JoinType.INNER,
+                    additionalConstraint = { groupedArtist[ArtistSetTable.setId] eq TrackTable.artistSetId }
+                )
+                .leftJoin(UserTable)
+                .slice(
+                    ScrobbleTable.time,
+                    TrackTable.name,
+                    TrackTable.preview,
+                    AlbumTable.name,
+                    AlbumTable.image,
+                    groupedArtist[artistNames],
+                    groupedArtist[artistImages],
+                    groupedArtist[artistGenres]
+                )
+                .select(where)
+
+            if (limit != null) {
+                rawScrobbles = rawScrobbles.limit(limit)
+            }
+
+            val artistAliases =
+                ArtistAliases(groupedArtist[artistNames], groupedArtist[artistImages], groupedArtist[artistGenres])
+            return@dbQuery rawScrobbles.map { ScrobbleData.fromRowResult(it, artistAliases) }
+        }
 }
 
 // For testing queries
-//@ExperimentalUnsignedTypes
-//suspend fun main() {
+// @ExperimentalUnsignedTypes
+// suspend fun main() {
 //    val db = DatabaseRepository()
 //    SpotifyRepository.init()
 //
@@ -190,4 +206,4 @@ class DatabaseRepository {
 //            1611756693
 //        )
 //    )
-//}
+// }
