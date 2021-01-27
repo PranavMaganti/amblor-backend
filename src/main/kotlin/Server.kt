@@ -1,6 +1,5 @@
 import com.auth0.jwk.JwkProviderBuilder
 import com.auth0.jwt.interfaces.Payload
-import com.mysql.cj.log.Slf4JLogger
 import db.DatabaseFactory
 import db.DatabaseRepository
 import io.ktor.application.Application
@@ -11,7 +10,6 @@ import io.ktor.auth.authenticate
 import io.ktor.auth.jwt.JWTPrincipal
 import io.ktor.auth.jwt.jwt
 import io.ktor.auth.principal
-import io.ktor.features.CallLogging
 import io.ktor.features.ContentNegotiation
 import io.ktor.http.HttpStatusCode
 import io.ktor.request.receive
@@ -29,7 +27,6 @@ import kotlinx.coroutines.runBlocking
 import models.NewUser
 import models.ScrobbleQuery
 import org.koin.dsl.module
-import org.slf4j.event.Level
 import org.koin.ktor.ext.Koin
 import org.koin.ktor.ext.inject
 import java.net.URL
@@ -55,9 +52,9 @@ fun Application.mainModule() {
         json()
     }
 
-    install(CallLogging) {
-        level = Level.ERROR
-    }
+//    install(CallLogging) {
+//        level = Level.ERROR
+//    }
 
     install(Koin) {
         modules(amblorAppModule)
@@ -78,8 +75,8 @@ fun Application.mainModule() {
                 val sub = credentials.payload.subject
                 val authTime = credentials.payload.getClaim("auth_time").asDate()
 
-                if (exp.after(now) && aud == listOf("amblor") && iat.before(now) && sub.isNotEmpty()
-                    && authTime.before(now)
+                if (exp.after(now) && aud == listOf("amblor") && iat.before(now) && sub.isNotEmpty() &&
+                    authTime.before(now)
                 ) {
                     JWTPrincipal(credentials.payload)
                 } else {
@@ -108,8 +105,8 @@ fun Route.scrobble() {
         val payload: Payload = call.principal<JWTPrincipal>()!!.payload
         val scrobbleQuery = call.receive<ScrobbleQuery>()
         SpotifyRepository.matchTrack(scrobbleQuery)?.let {
-            dbRepository.insertScrobble(it, payload.getEmail())
-            call.respond(HttpStatusCode.OK)
+            val scrobble = dbRepository.insertScrobble(it, payload.getEmail())
+            call.respond(HttpStatusCode.OK, scrobble)
         } ?: run {
             println("Can't match song: ${scrobbleQuery.track_name} - ${scrobbleQuery.artist_name}")
             call.respond(HttpStatusCode.BadRequest)
@@ -151,37 +148,3 @@ fun Route.users() {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

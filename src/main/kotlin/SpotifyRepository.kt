@@ -34,4 +34,3 @@ object SpotifyRepository {
         return tracks[0]
     }
 }
-

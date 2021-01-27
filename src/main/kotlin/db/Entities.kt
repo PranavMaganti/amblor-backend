@@ -24,10 +24,9 @@ class ArtistEntity(id: EntityID<Int>) : IntEntity(id) {
 
     var name_ by ArtistTable.name
     var image_ by ArtistTable.image
-    var genreId_ by ArtistTable.genreSetId
+    var genreId_ by ArtistTable.genreId
     var spotifyId_ by ArtistTable.spotifyId
 }
-
 
 class ArtistSetEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<ArtistSetEntity>(ArtistSetTable)
@@ -60,4 +59,3 @@ class GenreSetEntity(id: EntityID<Int>) : IntEntity(id) {
     companion object : IntEntityClass<GenreSetEntity>(GenreTable)
     var genres_ by GenreTable.genres
 }
-

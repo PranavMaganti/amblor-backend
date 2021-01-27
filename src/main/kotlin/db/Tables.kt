@@ -16,7 +16,7 @@ object AlbumTable : IntIdTable("album", "album_id") {
 object ArtistTable : IntIdTable("artist", "artist_id") {
     val name = varchar("name", 100)
     val image = varchar("image", 500)
-    val genreSetId = reference("genre_id", GenreTable)
+    val genreId = reference("genre_id", GenreTable)
     val spotifyId = varchar("spotify_id", 30)
 }
 

@@ -1,6 +1,11 @@
 package models
 
+import db.AlbumTable
+import db.ArtistAliases
+import db.ScrobbleTable
+import db.TrackTable
 import kotlinx.serialization.Serializable
+import org.jetbrains.exposed.sql.ResultRow
 
 @Serializable
 data class NewUser(val username: String)
@@ -15,7 +20,22 @@ data class ScrobbleData(
     val artist_names: String = "",
     val artist_images: String = "",
     val artist_genres: String = ""
-)
+) {
+    companion object {
+        fun fromRowResult(rowResult: ResultRow, artistAliases: ArtistAliases): ScrobbleData {
+            return ScrobbleData(
+                rowResult[ScrobbleTable.time].toInt(),
+                rowResult[TrackTable.name].toString(),
+                rowResult[TrackTable.preview].toString(),
+                rowResult[AlbumTable.name].toString(),
+                rowResult[AlbumTable.image].toString(),
+                rowResult[artistAliases.artistNames],
+                rowResult[artistAliases.artistImages],
+                rowResult[artistAliases.artistGenre]
+            )
+        }
+    }
+}
 
 @Serializable
 data class ScrobbleQuery(

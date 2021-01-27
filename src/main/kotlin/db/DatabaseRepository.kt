@@ -6,9 +6,23 @@ import com.adamratzman.spotify.models.Artist
 import com.adamratzman.spotify.models.SimpleAlbum
 import com.adamratzman.spotify.models.Track
 import db.DatabaseFactory.dbQuery
+import models.ScrobbleData
 import models.ScrobbleQuery
 import org.jetbrains.exposed.dao.id.EntityID
+import org.jetbrains.exposed.sql.Expression
+import org.jetbrains.exposed.sql.JoinType
 import org.jetbrains.exposed.sql.SortOrder
+import org.jetbrains.exposed.sql.alias
+import org.jetbrains.exposed.sql.and
+import org.jetbrains.exposed.sql.groupConcat
+import org.jetbrains.exposed.sql.select
+import org.jetbrains.exposed.sql.selectAll
+
+data class ArtistAliases(
+    val artistNames: Expression<String>,
+    val artistImages: Expression<String>,
+    val artistGenre: Expression<String>
+)
 
 class DatabaseRepository {
     init {
@@ -35,7 +49,7 @@ class DatabaseRepository {
     }
 
     @ExperimentalUnsignedTypes
-    suspend fun insertScrobble(scrobble: MatchedScrobble, email: String) = dbQuery {
+    suspend fun insertScrobble(scrobble: MatchedScrobble, email: String): ScrobbleData = dbQuery {
         val dbTrack = TrackEntity.find { TrackTable.spotifyId eq scrobble.track.id }.limit(1)
 
         val insertedTrackId = if (dbTrack.empty()) {
@@ -48,11 +62,13 @@ class DatabaseRepository {
         }
 
         val userId = getUserIdWithEmail(email)
-        insertScrobble(insertedTrackId, userId, scrobble.query.time)
+        val scrobbleId = insertScrobbleEntity(insertedTrackId, userId, scrobble.query.time).id
+
+        return@dbQuery getScrobbleById(userId, scrobbleId)
     }
 
     @ExperimentalUnsignedTypes
-    private suspend fun insertScrobble(trackId: EntityID<Int>, userId: EntityID<Int>, time: Int) = dbQuery {
+    private suspend fun insertScrobbleEntity(trackId: EntityID<Int>, userId: EntityID<Int>, time: Int) = dbQuery {
         ScrobbleEntity.new {
             userId_ = userId
             trackId_ = trackId
@@ -120,21 +136,58 @@ class DatabaseRepository {
                 artistSetId_ = artistSetId
             }.id
         }
+
+    private suspend fun getScrobbleById(userId: EntityID<Int>, id: EntityID<Int>) = dbQuery {
+        val artistNames = ArtistTable.name.groupConcat("/").alias("aritst_names")
+        val artistImages = ArtistTable.image.groupConcat(" ").alias("artist_images")
+        val artistGenres = GenreTable.genres.groupConcat("/").alias("artist_genres")
+        val groupedArtist = ArtistSetTable
+            .innerJoin(ArtistTable)
+            .innerJoin(GenreTable)
+            .slice(ArtistSetTable.setId, artistNames, artistImages, artistGenres)
+            .selectAll()
+            .groupBy(ArtistSetTable.setId)
+            .alias("grouped_artists")
+
+        val rawScrobble = ScrobbleTable
+            .innerJoin(TrackTable)
+            .innerJoin(AlbumTable)
+            .join(
+                groupedArtist,
+                JoinType.INNER,
+                additionalConstraint = { groupedArtist[ArtistSetTable.setId] eq TrackTable.artistSetId }
+            )
+            .leftJoin(UserTable)
+            .slice(
+                ScrobbleTable.time,
+                TrackTable.name,
+                TrackTable.preview,
+                AlbumTable.name,
+                AlbumTable.image,
+                groupedArtist[artistNames],
+                groupedArtist[artistImages],
+                groupedArtist[artistGenres]
+            )
+            .select { (UserTable.id eq userId) and (ScrobbleTable.id eq id) }
+            .first()
+
+        val artistAliases =
+            ArtistAliases(groupedArtist[artistNames], groupedArtist[artistImages], groupedArtist[artistGenres])
+        return@dbQuery ScrobbleData.fromRowResult(rawScrobble, artistAliases)
+    }
 }
 
-@ExperimentalUnsignedTypes
-suspend fun main() {
-    val db = DatabaseRepository()
-    SpotifyRepository.init()
-
-    // db.addNewUser("vanpra", "pranav.maganti@gmail.com")
-
-    val track = SpotifyRepository.matchTrack(
-        ScrobbleQuery(
-            "If the World Was Ending (feat. Julia Michaels)",
-            "JP Saxe & Julia Michaels",
-            1010010
-        )
-    )
-    db.insertScrobble(track!!, "pranav.maganti@gmail.com")
-}
+// For testing queries
+//@ExperimentalUnsignedTypes
+//suspend fun main() {
+//    val db = DatabaseRepository()
+//    SpotifyRepository.init()
+//
+//    val track = SpotifyRepository.matchTrack(
+//        ScrobbleQuery(
+//            "Better",
+//            "Talia Mar",
+//            1611756693
+//        )
+//    )
+//}
