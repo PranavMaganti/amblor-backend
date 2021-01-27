@@ -138,8 +138,8 @@ class DatabaseRepository {
             }.id
         }
 
-    suspend fun getAllScrobbles(email: String): List<ScrobbleData> = dbQuery {
-        return@dbQuery queryScrobbles { (UserTable.email eq email) }
+    suspend fun getAllScrobbles(email: String, after: Int): List<ScrobbleData> = dbQuery {
+        return@dbQuery queryScrobbles { (UserTable.email eq email) and (ScrobbleTable.time greater after) }
     }
 
     private suspend fun getScrobbleById(userId: EntityID<Int>, id: EntityID<Int>) = dbQuery {

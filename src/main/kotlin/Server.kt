@@ -13,6 +13,7 @@ import io.ktor.auth.principal
 import io.ktor.features.ContentNegotiation
 import io.ktor.http.HttpStatusCode
 import io.ktor.request.receive
+import io.ktor.request.receiveOrNull
 import io.ktor.response.respond
 import io.ktor.routing.Route
 import io.ktor.routing.get
@@ -116,7 +117,8 @@ fun Route.scrobble() {
 
     get {
         val payload: Payload = call.principal<JWTPrincipal>()!!.payload
-        val scrobbles = dbRepository.getAllScrobbles(payload.getEmail())
+        val latestScrobbleSync = call.receiveOrNull() ?: 0
+        val scrobbles = dbRepository.getAllScrobbles(payload.getEmail(), latestScrobbleSync)
 
         call.respond(HttpStatusCode.OK, scrobbles)
     }
