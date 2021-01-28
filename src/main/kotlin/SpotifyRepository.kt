@@ -16,21 +16,34 @@ object SpotifyRepository {
         spotifyApi = spotifyApiBuilder.build()
     }
 
-    suspend fun matchTrack(query: ScrobbleQuery): MatchedScrobble? {
-        val spotifyQuery = query.getSpotifyQuery()
+    suspend fun matchTrack(query: ScrobbleQuery, titleOnly: Boolean = false): MatchedScrobble? {
+        val spotifyQuery = query.getSpotifyQuery(titleOnly)
         val candidateTracks = spotifyApi.search.searchTrack(spotifyQuery, limit = 3).items
 
-        if (candidateTracks.isEmpty()) return null
+        if (candidateTracks.isEmpty() && titleOnly) {
+            return null
+        } else if (candidateTracks.isEmpty()) {
+            return matchTrack(query, true)
+        }
 
-        val track = chooseValidTrack(query, candidateTracks)
-        val artistIds = track.artists.map { it.id }
-        val artists = spotifyApi.artists.getArtists(*artistIds.toTypedArray())
+       return chooseValidTrack(query, candidateTracks)?.let { track ->
+           val artistIds = track.artists.map { it.id }
+           val artists = spotifyApi.artists.getArtists(*artistIds.toTypedArray())
 
-        return MatchedScrobble(track, artists, query.time, query)
+           return MatchedScrobble(track, artists, query.time, query)
+       }
     }
 
-    private fun chooseValidTrack(query: ScrobbleQuery, tracks: List<Track>): Track {
-        // TODO: Add proper checking
-        return tracks[0]
+    private fun chooseValidTrack(query: ScrobbleQuery, tracks: List<Track>): Track? {
+        // TODO: More robust checking
+        val targetArtist = query.getMainArtist()
+        tracks.forEach { track ->
+            if (track.artists.map { it.name }.contains(targetArtist)) {
+                return track
+            }
+        }
+
+        return null
     }
 }
+

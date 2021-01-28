@@ -43,7 +43,13 @@ data class ScrobbleQuery(
     val artist_name: String,
     val time: Int
 ) {
-    fun getSpotifyQuery(): String = "track:${getCleanTitle()} artist:${getMainArtist()}"
+    fun getSpotifyQuery(titleOnly: Boolean = false): String {
+        return if (titleOnly) {
+            getCleanTitle()
+        } else {
+            "track:${getCleanTitle()} artist:${getMainArtist()}"
+        }
+    }
 
     private fun getCleanTitle(): String {
         val cleanTitle = Regex("\\((feat|From).*\\)").replace(track_name, "").trim()
@@ -52,5 +58,5 @@ data class ScrobbleQuery(
         return cleanTitle
     }
 
-    private fun getMainArtist(): String = artist_name.split(Regex("[&,]"))[0].trim()
+    fun getMainArtist(): String = artist_name.split(Regex("[&,]"))[0].trim()
 }

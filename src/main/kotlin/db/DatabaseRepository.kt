@@ -6,6 +6,7 @@ import com.adamratzman.spotify.models.SimpleAlbum
 import com.adamratzman.spotify.models.Track
 import db.DatabaseFactory.dbQuery
 import models.ScrobbleData
+import models.ScrobbleQuery
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.Expression
 import org.jetbrains.exposed.sql.JoinType
@@ -201,9 +202,11 @@ class DatabaseRepository {
 //
 //    val track = SpotifyRepository.matchTrack(
 //        ScrobbleQuery(
-//            "Better",
-//            "Talia Mar",
+//            "Don't Play",
+//            "KSI, Digital Farm Animals & Anne-Marie",
 //            1611756693
 //        )
 //    )
+//
+//    println(track)
 // }
