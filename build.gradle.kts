@@ -90,6 +90,6 @@ tasks.create("stage") {
 }
 
 application {
-    mainModule.set("ServerKt")
+    mainClass.set("ServerKt")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=true")
 }
