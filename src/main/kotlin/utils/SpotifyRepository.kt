@@ -1,3 +1,5 @@
+package utils
+
 import com.adamratzman.spotify.SpotifyAppApi
 import com.adamratzman.spotify.models.Artist
 import com.adamratzman.spotify.models.Track
@@ -12,8 +14,7 @@ object SpotifyRepository {
     suspend fun init() {
         val clientId = System.getenv("SPOTIFY_CLIENT_ID")
         val clientSecret = System.getenv("SPOTIFY_CLIENT_SECRET")
-        val spotifyApiBuilder = spotifyAppApi(clientId, clientSecret)
-        spotifyApi = spotifyApiBuilder.build()
+        spotifyApi = spotifyAppApi(clientId, clientSecret).build()
     }
 
     suspend fun matchTrack(query: ScrobbleQuery, titleOnly: Boolean = false): MatchedScrobble? {
@@ -26,24 +27,22 @@ object SpotifyRepository {
             return matchTrack(query, true)
         }
 
-       return chooseValidTrack(query, candidateTracks)?.let { track ->
-           val artistIds = track.artists.map { it.id }
-           val artists = spotifyApi.artists.getArtists(*artistIds.toTypedArray())
+        return chooseValidTrack(query, candidateTracks)?.let { track ->
+            val artistIds = track.artists.map { it.id }
+            val artists = spotifyApi.artists.getArtists(*artistIds.toTypedArray())
 
-           return MatchedScrobble(track, artists, query.time, query)
-       }
+            return MatchedScrobble(track, artists, query.time, query)
+        }
     }
 
     private fun chooseValidTrack(query: ScrobbleQuery, tracks: List<Track>): Track? {
-        // TODO: More robust checking
+        // TODO: Make checking more robust
         val targetArtist = query.getMainArtist()
         tracks.forEach { track ->
             if (track.artists.map { it.name }.contains(targetArtist)) {
                 return track
             }
         }
-
         return null
     }
 }
-

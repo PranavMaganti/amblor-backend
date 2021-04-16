@@ -31,7 +31,7 @@ object DatabaseFactory {
         config.jdbcUrl = "jdbc:mysql://35.246.27.64:3306/amblor"
         config.username = System.getenv("MYSQL_USERNAME")
         config.password = System.getenv("MYSQL_PASSWORD")
-        config.maximumPoolSize = 10
+        config.maximumPoolSize = 5
         config.isAutoCommit = false
         config.transactionIsolation = "TRANSACTION_REPEATABLE_READ"
 

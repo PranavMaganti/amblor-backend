@@ -1,12 +1,10 @@
 package db
 
-import MatchedScrobble
 import com.adamratzman.spotify.models.Artist
 import com.adamratzman.spotify.models.SimpleAlbum
 import com.adamratzman.spotify.models.Track
 import db.DatabaseFactory.dbQuery
 import models.ScrobbleData
-import models.ScrobbleQuery
 import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.Expression
 import org.jetbrains.exposed.sql.JoinType
@@ -19,6 +17,8 @@ import org.jetbrains.exposed.sql.and
 import org.jetbrains.exposed.sql.groupConcat
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll
+import utils.MatchedScrobble
+import utils.SpotifyRepository
 
 data class ArtistAliases(
     val artistNames: Expression<String>,
@@ -195,12 +195,13 @@ class DatabaseRepository {
 }
 
 // For testing queries
-// @ExperimentalUnsignedTypes
-// suspend fun main() {
+@ExperimentalUnsignedTypes
+suspend fun main() {
 //    val db = DatabaseRepository()
-//    SpotifyRepository.init()
-//
-//    val track = SpotifyRepository.matchTrack(
+//    println(db.getAllScrobbles("pranav.maganti@gmail.com", 0))
+
+    SpotifyRepository.init()
+//    val track = utils.SpotifyRepository.matchTrack(
 //        ScrobbleQuery(
 //            "Don't Play",
 //            "KSI, Digital Farm Animals & Anne-Marie",
@@ -209,4 +210,4 @@ class DatabaseRepository {
 //    )
 //
 //    println(track)
-// }
+}

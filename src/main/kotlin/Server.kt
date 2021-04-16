@@ -10,8 +10,14 @@ import io.ktor.auth.authenticate
 import io.ktor.auth.jwt.JWTPrincipal
 import io.ktor.auth.jwt.jwt
 import io.ktor.auth.principal
+import io.ktor.features.CORS
+import io.ktor.features.CallLogging
 import io.ktor.features.ContentNegotiation
+import io.ktor.features.DefaultHeaders
+import io.ktor.http.HttpHeaders
+import io.ktor.http.HttpMethod
 import io.ktor.http.HttpStatusCode
+import io.ktor.request.path
 import io.ktor.request.receive
 import io.ktor.request.receiveOrNull
 import io.ktor.response.respond
@@ -28,9 +34,9 @@ import io.ktor.util.KtorExperimentalAPI
 import kotlinx.coroutines.runBlocking
 import models.NewUser
 import models.ScrobbleQuery
-import org.koin.dsl.module
 import org.koin.ktor.ext.Koin
 import org.koin.ktor.ext.inject
+import utils.SpotifyRepository
 import java.net.URL
 import java.time.Instant
 import java.util.Date
@@ -45,21 +51,39 @@ fun main(args: Array<String>) {
 
 @KtorExperimentalAPI
 fun Application.mainModule() {
-    DatabaseFactory.init()
     runBlocking {
         SpotifyRepository.init()
+        DatabaseFactory.init()
+    }
+
+    install(DefaultHeaders)
+
+    install(CORS) {
+        method(HttpMethod.Get)
+        method(HttpMethod.Post)
+        method(HttpMethod.Options)
+        method(HttpMethod.Put)
+        method(HttpMethod.Delete)
+        method(HttpMethod.Head)
+
+        header(HttpHeaders.Authorization)
+        header(HttpHeaders.ContentType)
+
+        allowCredentials = true
+        allowNonSimpleContentTypes = true
+        anyHost()
     }
 
     install(ContentNegotiation) {
         json()
     }
 
-//    install(CallLogging) {
-//        level = Level.ERROR
-//    }
-
     install(Koin) {
         modules(amblorAppModule)
+    }
+
+    install(CallLogging) {
+        filter { call -> call.request.path().startsWith("/api/v1") }
     }
 
     val jwkIssuer = URL("https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com")
@@ -107,6 +131,7 @@ fun Route.scrobble() {
         val payload: Payload = call.principal<JWTPrincipal>()!!.payload
         val scrobbleQuery = call.receive<ScrobbleQuery>()
         SpotifyRepository.matchTrack(scrobbleQuery)?.let {
+            println(it)
             val scrobble = dbRepository.insertScrobble(it, payload.getEmail())
             call.respond(HttpStatusCode.OK, scrobble)
         } ?: run {
